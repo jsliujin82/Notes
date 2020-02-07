@@ -264,12 +264,8 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # 复制自己的ranger config
 ```
 `Ranger`中插件
+
 [ranger_deviconsi](https://github.com/alexanderjeurissen/ranger_devicons)
-```
-
-```
-
-<++>
 
 
 #### 安装polybar，屏幕上方显示状态栏
