@@ -289,8 +289,20 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 ```bash
 sudo pacman -S w3m
 ```
-
-<++>
+默认打开编辑器更改为nvim
+编辑`~/.profile`,将
+```
+export EDITOR=/usr/bin/nano
+```
+更改为
+```
+export EDITOR=/usr/bin/nvim
+```
+编辑`~/.zshrc`，添加如下
+```
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
+```
 
 #### 安装polybar，屏幕上方显示状态栏
 ```
