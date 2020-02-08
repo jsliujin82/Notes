@@ -18,10 +18,17 @@ sudo pacman -Syy && sudo pacman -S archlinuxcn-keyring
 sudo pacman -Syyu
 ```
 
-#### 1.2安装中文字体
+#### 1.2安装font
+中文字体
 ```bash
 yay -S wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei adobe-source-han-mono-cn-fonts adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
 ```
+Emoji
+```
+yay -S ttf-linux-libertine ttf-inconsolata ttf-joypixels ttf-twemoji-color noto-fonts-emoji ttf-liberation ttf-droid
+```
+
+<++>
 
 #### 1.3耳机声卡设置
 ```bash
@@ -76,13 +83,22 @@ cp -r .config/vim ~/.vim
 sudo pacman -S vim
 vim # 然后等待安装插件
 ```
+#### 安装neovim
+nvim与系统之间的复制粘贴，需要`xsel`或`xclip`
+```
+sudo pacman -S xsel
+```
 
 #### 安装nodejs
 ```
 # 由于vim插件coc需要nodejs，须先安装
 sudo pacman -S nodejs npm
+# 更改npm镜像源
+npm config set registry https://registry.npm.taobao.org
 # 安装cnpm，使用其他镜像（例子为淘宝镜像）
-sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
+sudo npm install -g cnpm
+# 安装yarn
+sudo cnpm install -g yarn
 # 前端脚手架工具
 sudo cnpm isntall -g fis3
 ```
@@ -263,10 +279,18 @@ ranger --copy-config=all
 export RANGER_LOAD_DEFAULT_RC=FALSE
 # 复制自己的ranger config
 ```
-`Ranger`中插件
+插件[`Ranger Plugin`](https://github.com/ranger/ranger/wiki/Plugins):
 
 [ranger_deviconsi](https://github.com/alexanderjeurissen/ranger_devicons)
 
+自定义命令[Costom Commands](https://github.com/ranger/ranger/wiki/Custom-Commands) :
+
+图片预览[Image Previews](https://github.com/ranger/ranger/wiki/Image-Previews) :
+```bash
+sudo pacman -S w3m
+```
+
+<++>
 
 #### 安装polybar，屏幕上方显示状态栏
 ```
