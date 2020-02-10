@@ -28,7 +28,6 @@ Emoji
 yay -S ttf-linux-libertine ttf-inconsolata ttf-joypixels ttf-twemoji-color noto-fonts-emoji ttf-liberation ttf-droid
 ```
 
-<++>
 
 #### 1.3耳机声卡设置
 ```bash
@@ -38,6 +37,7 @@ pavucontrol
 
 #### 1.4解决git clone速度慢问题（可能有效）
 [IP地址查询网址](https://www.ipaddress.com/)
+[DNS查询网址](http://tool.chinaz.com/dns?type=1&host=&ip=)
 查询下面地址的网址的IP地址
 ```txt
 github.com
@@ -51,7 +51,7 @@ github.global.ssl.fastly.net
 192.30.253.113 github.com
 151.101.25.194 github.global.ssl.fastly.net
 192.30.253.121 codeload.github.com
-199.232.4.133 raw.githubbusercintent.com
+199.232.4.133 raw.githubusercontent.com
 ```
 
 #### 1.5更新dns（不需要就不用执行）
@@ -84,6 +84,20 @@ sudo pacman -S vim
 vim # 然后等待安装插件
 ```
 #### 安装neovim
+```
+sudo pacman -S neovim
+```
+需要python2的支持
+```
+sudo pacman -S python2-pip
+python2 -m pip install --user --upgrade pynvim
+```
+需要python3的支持
+```
+pip3 install --user pynvim
+```
+
+<++>
 nvim与系统之间的复制粘贴，需要`xsel`或`xclip`
 ```
 sudo pacman -S xsel
@@ -349,6 +363,41 @@ aurman -S deepin-wechat
 sudo pacman -S typora
 ```
 
+#### 安装及配置`shadowsocks` `privoxy`
+```
+sudo pacman -S shadowsocks privoxy
+```
+配置`shadowsocks` 新建修改`~/.config/shadowsocks/local.json` ``
+```
+{
+	"server": "xxx.xxx.xxx.xxx",
+	"server_port": 1002,
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+	"password": "xxxxx",
+	"method": "aes-256-cfb",
+    "timeout": 300,
+    "fast_open": true,
+	"remarks": ""
+}
+```
+启动`shadowsocks` 服务
+```bash
+sslocal -c ~/.config/shadowsocks/local.json
+```
+配置`privoxy` 编辑`/etc/privoxy/config`
+搜索到`listen-address 127.0.0.1:8118`,保证其未被注释;
+在搜索`forward-socks5t / 127.0.0.1:1080 .`,取消注释
+保存退出，再启动`privoxy`
+```
+systemctl start privoxy
+```
+设定全局代理，编辑`.zshrc`
+```
+export http_proxy=http://127.0.0.1:8118
+export https_proxy=http://127.0.0.1:8118
+export ftp_proxy=http://127.0.0.1:8118
+```
 
 ### 3.i3桌面优化
 
