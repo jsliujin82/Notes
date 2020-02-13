@@ -1,5 +1,8 @@
 # Manjaro 系统安装与配置
+### 0.用Hyper-v安装
+
 ### 1.升级系统
+
 #### 1.1修改更新源
 ```bash
 # 对国内的镜像源进行测速及选择
@@ -43,6 +46,7 @@ pavucontrol
 [IP地址查询网址](https://www.ipaddress.com/)
 [DNS查询网址](http://tool.chinaz.com/dns?type=1&host=&ip=)
 查询下面地址的网址的IP地址
+
 ```txt
 github.com
 github.global.ssl.fastly.net
