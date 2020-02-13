@@ -23,7 +23,11 @@ sudo pacman -Syyu
 ```bash
 yay -S wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei adobe-source-han-mono-cn-fonts adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
 ```
-Emoji
+`wps`需要字体
+```
+sudo pacman -S ttf-wps-fonts
+```
+`Emoji`
 ```
 yay -S ttf-linux-libertine ttf-inconsolata ttf-joypixels ttf-twemoji-color noto-fonts-emoji ttf-liberation ttf-droid
 ```
@@ -356,11 +360,20 @@ sudo pacman -S netease-cloud-music
 sudo pacman -S aurman
 aurman -S deepin-wechat
 ```
+#### 安装WPS
+```
+sudo pacman -S wps-office
+```
 
 #### 安装Typora
 
 ```bash
 sudo pacman -S typora
+```
+#### 安装pdf阅读器`zathura`
+`zathura-pdf-poppler`为`zathura` 必须插件
+```
+sudo pacman -S zathura zathura-pdf-poppler
 ```
 
 #### 安装及配置`shadowsocks` `privoxy`
