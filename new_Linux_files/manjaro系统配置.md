@@ -28,7 +28,7 @@
 # 对国内的镜像源进行测速及选择
 sudo pacman-mirrors -i -c China -m rank
 # 编辑pacman config
-sudo nano /etc/pacman.conf
+sudo vi /etc/pacman.conf
 # 找到[mutilib]相关配置的位置在下方
 # 添加如下信息：
 [archlinuxcn]
