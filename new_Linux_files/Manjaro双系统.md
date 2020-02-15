@@ -44,7 +44,11 @@ GRUB_TIMEOUT=3 # 将等待时间修改为3秒
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-
-
+### 同步双系统时间为当地时间
+```
+sudo timedatectl set-local-rtc 1 # 将硬件时间UTC改为CST，双系统时间保持一致
+sudo ntpdate time.windows.com # 更新一下时间，确保时间无误
+sudo hwclock --localtime --systohc # 将时间更行到硬件上
+```
 
 
