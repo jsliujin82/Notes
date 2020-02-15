@@ -1,6 +1,26 @@
 # Manjaro 系统安装与配置
 ### 0.用Hyper-v安装
 
+#### 0.1设置`Hyper-V `
+
+> 在`Hyper-V Settings`选中 `Allow enhanced session mode`
+>
+> 在`Virtual Switch Manager`中建立`External network（外部网络）`的网络交换机
+
+#### 0.2 创建虚拟机，注意以下
+
+> 选择`Generation 2`
+>
+> 选择`镜像加载`
+
+#### 0.3设置创建好的虚拟机`Settings for New_Manjaro`
+
+*`Security`*中取消勾选`Enable Secure Boot'
+
+#### 0.4 进入系统后，会如愿以偿的被卡住
+
+
+
 ### 1.升级系统
 
 #### 1.1修改更新源
@@ -13,7 +33,7 @@ sudo nano /etc/pacman.conf
 # 添加如下信息：
 [archlinuxcn]
 SigLevel = Never
-Server = https://mirrois.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 # 保存后执行
 # 更新同步源及导入GPG key
 sudo pacman -Syy && sudo pacman -S archlinuxcn-keyring
