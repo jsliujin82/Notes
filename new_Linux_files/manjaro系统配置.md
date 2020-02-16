@@ -273,6 +273,41 @@ sudo pacman -S compton
 ```
 
 #### 安装输入法及设置
+
+**优先使用方法1**：
+
+```bash
+sudo pacman -S fcitx fcitx-im fcitx-libpinyin kcm-fcitx fcitx-configtool fcitx-sogoupinyin   fcitx-sunpinyin
+sudo pacman -U https://arch-archive.tuna.tsinghua.edu.cn/2019/04-29/community/os/x86_64/fcitx-qt4-4.2.9.6-1-x86_64.pkg.tar.xz
+```
+
+修改`/etc/profile`
+
+```bash
+sudo vim /etc/profile
+```
+
+在文末添加以下信息：
+
+```
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export LC_CTYPE=zh_CN.UTF-8
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+```
+
+激活修改后的`/etc/profile`，并重启
+
+```bash
+source /etc/profile
+reboot
+```
+
+如果搜狗输入法异常，删除`.config`中有关`sogou`的所有文件再重启
+
+**方法2**：
+
 ```
 sudo pacman -S fcitx fcitx-im fcitx-configtool
 sudo pacman -S fcitx-sogoupinyin
