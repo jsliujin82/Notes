@@ -24,22 +24,44 @@
 ### 1.升级系统
 
 #### 1.1修改更新源
+对国内的镜像源进行测速及选择
 ```bash
-# 对国内的镜像源进行测速及选择
 sudo pacman-mirrors -i -c China -m rank
-# 编辑pacman config
+```
+编辑`pacman config`
+```bash
 sudo vi /etc/pacman.conf
-# 找到[mutilib]相关配置的位置在下方
-# 添加如下信息：
+```
+找到`[mutilib]`相关配置的位置在下方
+添加如下信息：
+```
+# 1. 如果选择清华：
 [archlinuxcn]
 SigLevel = Never
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
-# 保存后执行
-# 更新同步源及导入GPG key
+# 2. 如果选择的上海交大
+[archlinuxcn]
+SigLevel = Optional TrustedOnly
+Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux-cn/$arch
+# 3. 如果选择中科大
+[archlinuxcn]
+SigLevel = Optional TrustedOnly
+Server = http://mirrors.ustc.edu.cn/archlinuxcn/$arch
+```
+保存后,更新同步源及导入GPG key
+```bash
 sudo pacman -Syy && sudo pacman -S archlinuxcn-keyring
-# 同步源并更新系统
+```
+同步源并更新系统
+```bash
 sudo pacman -Syyu
 ```
+**安装yaourt**
+```
+sudo pacman -S yaourt
+```
+
+<++>
 
 #### 1.2安装font
 中文字体
