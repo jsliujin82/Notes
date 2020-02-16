@@ -220,9 +220,11 @@ chsh -s /usr/bin/zsh
 ```
 cp ~/.config/zsh/zshrc ~/.zshrc
 ```
+注意修改'zsh'路径
+
 ##### 安装自动跳转、语法建议、语法高亮插件
-```
-sudo pacman -S autojump
+```bash
+# sudo pacman -S autojump
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
@@ -250,18 +252,6 @@ reboot
 # --no-startup-id 当启动了某些并不支持启动提醒的某脚本或程序时，鼠标指针会逗留在忙碌状态六十秒以上。为防止此现象，凡是 exec 命令都均加 --no-startup-id
 ```
 
-##### i3窗口与窗口之间设置空格
-```
-sudo pacman -S i3-gaps
-# i3 config中最后添加
-gaps inner 8
-```
-
-##### 删除i3窗口下的状态栏
-```
-sudo pacman -R i3status
-```
-
 ##### 设置分辨率
 ```
 vim ~/.Xresources
@@ -270,25 +260,30 @@ Xft.dpi: 200 # 显示器分辨率高的可选择200， 低的可选择不设置
 reboot
 ```
 
-#### 安装alacrity 及设置   （更新terminal）
+##### 统一安装相关app
+sudo pacman -S i3-gaps alacritty dmenu xorg lxappearance feh variety 
+
+|--------------|--------------------------|----------------------------|
+| 名称         | 作用                     | 备注                       |
+|--------------|--------------------------|----------------------------|
+| i3-gaps      | i3窗口与窗口之间设置空格 |                            |
+| alacritty    | 终端                     | 复制`Alacritty.yml`        |
+| dmenu        | i3的导航菜单栏           | `win+d`打开                |
+| xorg         | 更改硬件设置，主要是键位 | 复制xmodmap,`win+shift+n`  |
+| lxappearance | 主题设置                 | 输入`lxappearance`设置主题 |
+| feh          | 壁纸软件                 | 配合`variety`使用          |
+| variety      | `feh`管理器              | 输入`variety`设置壁纸      |
+| compton      | 渲染器（透明）           | 复制`picom.conf`           |
+| polybar      | 状态栏                   | 复制`polybar/`             |
+|--------------|--------------------------|----------------------------|
+
+##### 删除i3窗口下的状态栏
 ```
-sudo pacman -S alacritty
-# 编辑i3默认打开alacritty
-vim ~/.config/i3/config
-# 找到 start a terminal 修改为
-bindsym $mod+Return exec alacritty
-# 复制alacritty.yml到~/.config/alacritty
+sudo pacman -R i3status
 ```
 
-#### 安装dmenu 及设置  (i3的导航菜单栏)
+##### xorg设置
 ```
-sudo pacman -S dmemu
-# i3中默认快捷键win+d 打开
-```
-
-#### 安装xorg及设置 （更改硬件设置，主要更改键位）
-```
-sudo pacman -S xorg
 xmodmap -pke > ~/.xmodmap
 vim ~/.xmodmap
 # 新建窗口 win+enter
@@ -296,109 +291,67 @@ xev # 可查看键盘键位所代表的key值
 # 尽量复制自己的文件
 # 更新key值后，刷新xmodmap
 xmodmap ~/.xmodmap
-# i3 config 中添加自启动
-exec_killall xmodmap
-xmodmap ~/.xmodmap
-```
-
-#### 安装lxappearance及设置（主题）
-```
-sudo pacman -S lxappearance
-lxappearance # 选择主题
-```
-
-#### 安装feh及设置（壁纸）
-```
-sudo pacman -S feh
-# 安装feh管理器
-sudo pacman -S variety
-# win+s 输入 variety 设置壁纸等
-```
-
-#### 安装compton及设置（渲染器）
-```
-sudo pacman -S compton
-# win+s 输入 compton 渲染
-# 复制编辑~/.config/picom.conf
 ```
 
 #### 安装输入法及设置
-
-**优先使用方法1**：
 
 ```bash
 sudo pacman -S fcitx fcitx-im fcitx-libpinyin kcm-fcitx fcitx-configtool fcitx-sogoupinyin   fcitx-sunpinyin
 sudo pacman -U https://arch-archive.tuna.tsinghua.edu.cn/2019/04-29/community/os/x86_64/fcitx-qt4-4.2.9.6-1-x86_64.pkg.tar.xz
 ```
 
-修改`/etc/profile`
-
-```bash
-sudo vim /etc/profile
+修改`~/.xprofile`
 ```
-
-在文末添加以下信息：
-
+vim ~/.xprofile
+```
+添加如下文本
 ```
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export LC_CTYPE=zh_CN.UTF-8
-export XMODIFIERS=@im=fcitx
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 ```
-
-激活修改后的`/etc/profile`，并重启
+激活修改后的`~/.xprofile`，并重启
 
 ```bash
-source /etc/profile
+source ~/.xprofile
 reboot
 ```
 
 如果搜狗输入法异常，删除`.config`中有关`sogou`的所有文件再重启
 
-**方法2**：
-
+#### 安装常用app
 ```
-sudo pacman -S fcitx fcitx-im fcitx-configtool
-sudo pacman -S fcitx-sogoupinyin
-# 如果未安装成功，需添加yaourt来安装qtwebkit-bin
-# sudo pacman -S yaourt
-# sudo pacman -S base-devel
-# yaourt -S qtwebkit-bin
-# sudo pacman -S fcitx-sogoupinyin
-vim ~/.xprofile
-# 添加如下文本
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
+sudo pacman -S yandex-browser-beta vlc virtualbox ranger w3m apvlv docker netease-cloud-music wps-office typora 
 ```
+|---------------------|------------------|-----------------------------------|
+| 名称                | 描述             | 备注                              |
+|---------------------|------------------|-----------------------------------|
+| yandex-browser-beta | `yandex` 浏览器  | H5视频问题                        |
+| vlc                 | 视频播放器       |                                   |
+| virtualbox          | 虚拟机           |                                   |
+| ranger              | 目录文件管理器   | 按照下方说明设置                  |
+| w3m                 | 浏览器           | 用于`ranger`预览图片              |
+| apvlv               | `PDF`阅读器      | 配合`ranger`使用,配置在`~/.apvlv` |
+| docker              | `docker`虚拟机   | 查看是否自启动                    |
+| netease-cloud-music | 网易云音乐       |                                   |
+| wps-office          |                  | 安装`wps`相关字体                 |
+| typora              | `Markdown`阅读器 |                                   |
+|---------------------|------------------|-----------------------------------|
 
-#### 安装chrome开源版chromium
+##### chrome开源版chromium
+由于与yandex有冲突，故不安装
 ```
 sudo pacman -S chromium
 ```
 
-#### 安装yandex-browser
-```
-sudo pacman -S yandex-browser-beta
-```
 ##### 修复yandex-browser不能播放H5视频问题
 ```
 sudo pacman -U ~/.config/browser/chromium-codecs-ffmpeg-extra.....
 ```
 
-
-#### 安装vlc，视屏播放器
-```
-sudo pacman -S vlc
-```
-
-#### 安装virtualbox，虚拟机
-```
-sudo pacman -S virtualbox
-```
-
-#### 安装ranger，文件管理器
+##### ranger配置
 ```
 sudo pacman -S ranger
 # 初始化ranger config 并改变ranger初始加位置
@@ -413,9 +366,6 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 自定义命令[Costom Commands](https://github.com/ranger/ranger/wiki/Custom-Commands) :
 
 图片预览[Image Previews](https://github.com/ranger/ranger/wiki/Image-Previews) :
-```bash
-sudo pacman -S w3m
-```
 默认打开编辑器更改为nvim
 编辑`~/.profile`,将
 ```
@@ -431,26 +381,9 @@ export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 ```
 
-#### 安装polybar，屏幕上方显示状态栏
+
+##### docker相关
 ```
-sudo pacman -S polybar
-mkdir ~/.config/polybar && cp /usr/share/doc/polybar/config ~/.config/polybar/
-# 默认打开方式来
-polybar example
-# 自启动的脚本设置
-vim launch.sh
-killall polybar
-polybar example
-# 保存，并更改为可自行文件
-chmod +x launch.ch
-vim ~/.config/i3/config
-# 添加如下
-exec_always ~/.config/polybar/launch.ch
-# 刷新i3 config
-```
-#### 安装docker
-```
-sudo pacman -S docker
 # 启动docker服务
 sudo systemctl start docker
 # 查看docker服务的状态
@@ -459,27 +392,12 @@ sudo systemctl status docker
 systemctl enable docker
 ```
 
-#### 安装网易云音乐
-```
-sudo pacman -S netease-cloud-music
-```
-
-#### 安装微信！！！！（未成功）
+##### 微信！！！！（未成功）
 ```
 sudo pacman -S aurman
 aurman -S deepin-wechat
 ```
-#### 安装WPS
-```
-sudo pacman -S wps-office
-```
-
-#### 安装Typora
-
-```bash
-sudo pacman -S typora
-```
-#### 安装pdf阅读器`zathura`
+##### pdf阅读器`zathura`，未找到配置相关项，故未安装
 `zathura-pdf-poppler`为`zathura` 必须插件
 ```
 sudo pacman -S zathura zathura-pdf-poppler
@@ -520,6 +438,4 @@ export http_proxy=http://127.0.0.1:8118
 export https_proxy=http://127.0.0.1:8118
 export ftp_proxy=http://127.0.0.1:8118
 ```
-
-### 3.i3桌面优化
 
