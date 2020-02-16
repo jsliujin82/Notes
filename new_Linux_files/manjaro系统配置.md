@@ -1,26 +1,4 @@
 # Manjaro 系统安装与配置
-### 0.用Hyper-v安装
-
-#### 0.1设置`Hyper-V `
-
-> 在`Hyper-V Settings`选中 `Allow enhanced session mode`
->
-> 在`Virtual Switch Manager`中建立`External network（外部网络）`的网络交换机
-
-#### 0.2 创建虚拟机，注意以下
-
-> 选择`Generation 2`
->
-> 选择`镜像加载`
-
-#### 0.3设置创建好的虚拟机`Settings for New_Manjaro`
-
-*`Security`*中取消勾选`Enable Secure Boot'
-
-#### 0.4 进入系统后，会如愿以偿的被卡住
-
-
-
 ### 1.升级系统
 
 #### 1.1修改更新源
@@ -90,7 +68,7 @@ yay -P -g
 #### 1.2安装font
 中文字体
 ```bash
-yay -S wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei adobe-source-han-mono-cn-fonts adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
+yay -S wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei adobe-source-han-mono-cn-fonts adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts nerd-fonts-source-code-pro
 ```
 `wps`需要字体
 ```
@@ -151,26 +129,31 @@ xrandr --output LVDS1 --auto --output HDMI1 --auto --right-of LVDS1
 ### 2.安装app
 
 #### 安装nodejs
-```
-# 由于vim插件coc需要nodejs，须先安装
+由于`nvim`插件`coc`需要`nodejs`，须先安装
+```bash
 sudo pacman -S nodejs npm
-# 更改npm镜像源
+```
+更改`npm`镜像源
+```bash
 npm config set registry https://registry.npm.taobao.org
-# 安装cnpm，使用其他镜像（例子为淘宝镜像）
+```
+安装`cnpm`，使用其他镜像（例子为淘宝镜像）
+```bash
 sudo npm install -g cnpm
-# 安装yarn
-sudo cnpm install -g yarn
-# 前端脚手架工具
-sudo cnpm install -g fis3
 ```
-#### 安装vim
+安装`yarn`及前端脚手架工具
+```bash
+sudo cnpm install -g yarn fis3
 ```
-# 先自行复制.ssh
+
+#### 安装vim(未安装，`nvim`代替)
+```
 git clone git@github.com:qiuyue77/.config.git
 cp -r .config/vim ~/.vim
 sudo pacman -S vim
 vim # 然后等待安装插件
 ```
+
 #### 安装`neovim`
 ```
 sudo pacman -S neovim
@@ -207,29 +190,46 @@ sudo pacman -Syy # 刷新pacman
 #### 更新shell 为 zsh
 ```bash
 sudo pacman -S zsh # manjaro应该自带zsh
-# 查看已安装shells列表
+```
+查看已安装shells列表
+```bash
 cat /etc/shells
-# 安装`oh-my-zsh`
-git clone https://github.com/ohmyzsh/ohmyzsh.git
-sh ohmyzsh/tools/install.sh
-# 更换shell
+```
+
+安装`oh-my-zsh`
+
+>方法1：
+>```bash
+>git clone https://github.com/ohmyzsh/ohmyzsh.git
+>sh ohmyzsh/tools/install.sh
+>```
+>方法2：
+>```bash
+>sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+>```
+>方法3：
+>```bash
+>sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+>```
+
+更换shell
+```bash
 chsh -s /bin/zsh
 chsh -s /usr/bin/zsh
 ```
 复制粘贴自己的zshrc
-```
+```bash
 cp ~/.config/zsh/zshrc ~/.zshrc
 ```
-注意修改'zsh'路径
+**注意修改'zsh'路径**
 
-##### 安装自动跳转、语法建议、语法高亮插件
+##### 语法建议、语法高亮插件
 ```bash
-# sudo pacman -S autojump
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 ##### 安装z.lua 跳转目录插件
-```
+```bash
 sudo pacman -S lua
 cd .config && git clone https://github.com/skywind3000/z.lua.git
 ```
@@ -261,9 +261,8 @@ reboot
 ```
 
 ##### 统一安装相关app
-sudo pacman -S i3-gaps alacritty dmenu xorg lxappearance feh variety 
+sudo pacman -S i3-gaps alacritty dmenu xorg lxappearance feh variety compton polybar
 
-|--------------|--------------------------|----------------------------|
 | 名称         | 作用                     | 备注                       |
 |--------------|--------------------------|----------------------------|
 | i3-gaps      | i3窗口与窗口之间设置空格 |                            |
@@ -275,7 +274,6 @@ sudo pacman -S i3-gaps alacritty dmenu xorg lxappearance feh variety
 | variety      | `feh`管理器              | 输入`variety`设置壁纸      |
 | compton      | 渲染器（透明）           | 复制`picom.conf`           |
 | polybar      | 状态栏                   | 复制`polybar/`             |
-|--------------|--------------------------|----------------------------|
 
 ##### 删除i3窗口下的状态栏
 ```
@@ -286,10 +284,16 @@ sudo pacman -R i3status
 ```
 xmodmap -pke > ~/.xmodmap
 vim ~/.xmodmap
-# 新建窗口 win+enter
+```
+
+新建窗口 win+enter
+```
 xev # 可查看键盘键位所代表的key值
-# 尽量复制自己的文件
-# 更新key值后，刷新xmodmap
+```
+
+尽量复制自己的文件
+更新key值后，刷新xmodmap
+```
 xmodmap ~/.xmodmap
 ```
 
@@ -322,23 +326,30 @@ reboot
 如果搜狗输入法异常，删除`.config`中有关`sogou`的所有文件再重启
 
 #### 安装常用app
+```bash
+sudo pacman -S yandex-browser-beta visual-studio-code-bin vlc virtualbox ranger w3m docker netease-cloud-music wps-office typora
 ```
-sudo pacman -S yandex-browser-beta vlc virtualbox ranger w3m apvlv docker netease-cloud-music wps-office typora 
+安装常用打包基本工具
+```bash
+sudo pacman -S base-devel 
 ```
-|---------------------|------------------|-----------------------------------|
-| 名称                | 描述             | 备注                              |
-|---------------------|------------------|-----------------------------------|
-| yandex-browser-beta | `yandex` 浏览器  | H5视频问题                        |
-| vlc                 | 视频播放器       |                                   |
-| virtualbox          | 虚拟机           |                                   |
-| ranger              | 目录文件管理器   | 按照下方说明设置                  |
-| w3m                 | 浏览器           | 用于`ranger`预览图片              |
-| apvlv               | `PDF`阅读器      | 配合`ranger`使用,配置在`~/.apvlv` |
-| docker              | `docker`虚拟机   | 查看是否自启动                    |
-| netease-cloud-music | 网易云音乐       |                                   |
-| wps-office          |                  | 安装`wps`相关字体                 |
-| typora              | `Markdown`阅读器 |                                   |
-|---------------------|------------------|-----------------------------------|
+安装 `apvlv`
+```bash
+yaourt -S apvlv
+```
+| 名称                   | 描述             | 备注                              |
+|------------------------|------------------|-----------------------------------|
+| yandex-browser-beta    | `yandex` 浏览器  | H5视频问题                        |
+| visual-studio-code-bin | `vscode`编辑器   | 安装插件                          |
+| vlc                    | 视频播放器       |                                   |
+| virtualbox             | 虚拟机           |                                   |
+| ranger                 | 目录文件管理器   | 按照下方说明设置                  |
+| w3m                    | 浏览器           | 用于`ranger`预览图片              |
+| apvlv                  | `PDF`阅读器      | 配合`ranger`使用,配置在`~/.apvlv` |
+| docker                 | `docker`虚拟机   | 查看是否自启动                    |
+| netease-cloud-music    | 网易云音乐       |                                   |
+| wps-office             |                  | 安装`wps`相关字体                 |
+| typora                 | `Markdown`阅读器 |                                   |
 
 ##### chrome开源版chromium
 由于与yandex有冲突，故不安装
@@ -352,20 +363,21 @@ sudo pacman -U ~/.config/browser/chromium-codecs-ffmpeg-extra.....
 ```
 
 ##### ranger配置
+初始化ranger config 并改变ranger初始加位置
 ```
-sudo pacman -S ranger
-# 初始化ranger config 并改变ranger初始加位置
 ranger --copy-config=all
 export RANGER_LOAD_DEFAULT_RC=FALSE
-# 复制自己的ranger config
 ```
+复制自己的ranger config
+
 插件[`Ranger Plugin`](https://github.com/ranger/ranger/wiki/Plugins):
 
-[ranger_deviconsi](https://github.com/alexanderjeurissen/ranger_devicons)
+>[`ranger_deviconsi`](https://github.com/alexanderjeurissen/ranger_devicons)
 
 自定义命令[Costom Commands](https://github.com/ranger/ranger/wiki/Custom-Commands) :
 
 图片预览[Image Previews](https://github.com/ranger/ranger/wiki/Image-Previews) :
+
 默认打开编辑器更改为nvim
 编辑`~/.profile`,将
 ```
@@ -407,23 +419,10 @@ sudo pacman -S zathura zathura-pdf-poppler
 ```
 sudo pacman -S shadowsocks privoxy
 ```
-配置`shadowsocks` 新建修改`~/.config/shadowsocks/local.json` ``
-```
-{
-	"server": "xxx.xxx.xxx.xxx",
-	"server_port": 1002,
-    "local_address": "127.0.0.1",
-    "local_port": 1080,
-	"password": "xxxxx",
-	"method": "aes-256-cfb",
-    "timeout": 300,
-    "fast_open": true,
-	"remarks": ""
-}
-```
-启动`shadowsocks` 服务
+复制`~/.config/shadowsocks/local.json`
 ```bash
 sslocal -c ~/.config/shadowsocks/local.json
+
 ```
 配置`privoxy` 编辑`/etc/privoxy/config`
 搜索到`listen-address 127.0.0.1:8118`,保证其未被注释;
