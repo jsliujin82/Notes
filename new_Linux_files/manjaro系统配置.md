@@ -149,33 +149,6 @@ xrandr --output LVDS1 --auto --output HDMI1 --auto --right-of LVDS1
 
 
 ### 2.安装app
-#### 安装vim
-```
-# 先自行复制.ssh
-git clone git@github.com:qiuyue77/.config.git
-cp -r .config/vim ~/.vim
-sudo pacman -S vim
-vim # 然后等待安装插件
-```
-#### 安装neovim
-```
-sudo pacman -S neovim
-```
-需要python2的支持
-```
-sudo pacman -S python2-pip
-python2 -m pip install --user --upgrade pynvim
-```
-需要python3的支持
-```
-pip3 install --user pynvim
-```
-
-<++>
-nvim与系统之间的复制粘贴，需要`xsel`或`xclip`
-```
-sudo pacman -S xsel
-```
 
 #### 安装nodejs
 ```
@@ -188,7 +161,38 @@ sudo npm install -g cnpm
 # 安装yarn
 sudo cnpm install -g yarn
 # 前端脚手架工具
-sudo cnpm isntall -g fis3
+sudo cnpm install -g fis3
+```
+#### 安装vim
+```
+# 先自行复制.ssh
+git clone git@github.com:qiuyue77/.config.git
+cp -r .config/vim ~/.vim
+sudo pacman -S vim
+vim # 然后等待安装插件
+```
+#### 安装`neovim`
+```
+sudo pacman -S neovim
+```
+需要`python2`的支持
+```
+sudo pacman -S python2-pip
+python2 -m pip install --user --upgrade pynvim
+```
+需要`python3`的支持
+```
+pip3 install --user pynvim
+```
+需要`npm,yarn`支持
+```
+sudo npm install -g neovim
+yarn global add neovim
+```
+
+nvim与系统之间的复制粘贴，需要`xsel`或`xclip`
+```
+sudo pacman -S xsel
 ```
 
 #### 更改pacman的状态
