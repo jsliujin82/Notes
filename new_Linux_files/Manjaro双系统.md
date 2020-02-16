@@ -41,7 +41,7 @@ GRUB_TIMEOUT=3 # 将等待时间修改为3秒
 重新生成配置文件
 
 ```
-grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ### 同步双系统时间为当地时间
