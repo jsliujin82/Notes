@@ -56,12 +56,36 @@ sudo pacman -Syy && sudo pacman -S archlinuxcn-keyring
 ```bash
 sudo pacman -Syyu
 ```
-**安装yaourt**
+**安装`yaourt`**
 ```
 sudo pacman -S yaourt
 ```
+更换`yaourt`源
+```bash
+sudo cp /etc/yaourtrc /etc/yaourtrc.backup # 备份
+sudo vi /etc/yaourtrc
+```
+将`AURURL`一栏取消备注，并更改：
+```
+AURURL="https://aur.tuna.tsinghua.edu.cn"
+```
 
-<++>
+**安装`yay`**
+```
+sudo pacman -S yay
+```
+更改`yay`源
+```
+yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
+```
+查看`yay`当前的源
+```
+yay -P -g
+```
+`yay`配置文件位置
+```
+~/.config/yay/config.json
+```
 
 #### 1.2安装font
 中文字体
