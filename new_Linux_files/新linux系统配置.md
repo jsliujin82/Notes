@@ -82,65 +82,60 @@ sudo apt install python3-pip
 >    ```bash
 >    sudo apt install git
 >    ```
->    如果出现 git status 不能正常显示中文，输入
->    ````bash
->    git config --global core.quotepath false 
->    ````
->
-> 5. **安装oh-my-zsh**
->
+>    **安装oh-my-zsh**
+> 
 >    ```bash
 >    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
->    ```
->
-> 6. **安装autojump激动跳转插件**
->
+>   ```
+> 
+>6. **安装autojump激动跳转插件**
+> 
 >    [autojump教程](https://www.linuxidc.com/Linux/2015-08/121421.htm)
->
->    ```bash
+> 
+>   ```bash
 >    sudo apt install autojump
->    cat /usr/share/doc/autojump/README.Debian  # 配置教程
+>   cat /usr/share/doc/autojump/README.Debian  # 配置教程
 >    vim ~/.zshrc
->    # 在最后一行加入，注意点`.`后面是一个空格
+>   # 在最后一行加入，注意点`.`后面是一个空格
 >    . /usr/share/autojump/autojump.sh
 >    source ~/.zshrc # 生效
 >    ```
->
+> 
 > 7. **安装zsh-syntax-highlighting语法高亮插件**
->
+> 
 >    ```bash
 >    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
->    echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+>   echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 >    source ~/.zshrc
->    ```
->
+>   ```
+> 
 > 8. **安装zsh-autosuggestions语法历史记录插件**
->
+> 
 >    ```bash
 >    git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
->    ```
->
->    添加到配置：
->
+>   ```
+> 
+>   添加到配置：
+> 
 >    ```bash
 >    vim ~/.zshrc
->    #搜索 plugins=
+>   #搜索 plugins=
 >    # 在括号中加上 
->    zsh-autosuggestions # 不同插件用空格隔开
+>   zsh-autosuggestions # 不同插件用空格隔开
 >    # 在plugins 下加上 
 >    setopt no_nomatch  # 如果不加的话就不能使用*
 >    # 在最后一行 添加
 >    source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 >    source ~/.zshrc
 >    ```
->
+> 
 > 9. ##### 安装z.lua 跳转目录插件
->
+> 
 >    安装`lua`
 >    ```bash
->    wget http://www.lua.org/ftp/lua-5.3.5.tar.gz
+>   wget http://www.lua.org/ftp/lua-5.3.5.tar.gz
 >    tar -zxvf lua-5.3.5.tar.gz
->    cd lua-5.3.5/
+>   cd lua-5.3.5/
 >    make linux test
 >    ```
 >    如果报错，应该是依赖不全
@@ -158,12 +153,12 @@ sudo apt install python3-pip
 >    eval "$(lua ~/.config/z.lua/z.lua  --init zsh once enhanced)"
 >    ```
 > 10. **配置主题**
->
+> 
 >    ```bash
 >    sudo vim ~/.zshrc
 >    # 找到ZSH_THEME=，修改=后面引号内的内容
 >    ZSH_THEME="ys"
->    ```
+>   ```
 
 #### 安装常用 app
 >    ```bash
@@ -420,3 +415,9 @@ sudo apt install python3-pip
 > git config --global user.name 'qiujl'
 > git config --global user.email 'qiuyue77@outlook.com'
 > ```
+>
+> 如果出现 git status 不能正常显示中文，输入
+>
+> ````bash
+> git config --global core.quotepath false 
+> ````
