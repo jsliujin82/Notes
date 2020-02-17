@@ -1,7 +1,9 @@
 # Manjaro 系统安装与配置
 ### 1.升级系统
 
-#### 1.1修改更新源
+#### 1.1修改更新源及基本设置
+**1.1.1 设置镜源**
+
 对国内的镜像源进行测速及选择
 ```bash
 sudo pacman-mirrors -i -c China -m rank
@@ -34,7 +36,7 @@ sudo pacman -Syy && sudo pacman -S archlinuxcn-keyring
 ```bash
 sudo pacman -Syyu
 ```
-**安装`yaourt`**
+**1.1.2 安装`yaourt`并设置镜源**
 ```
 sudo pacman -S yaourt
 ```
@@ -48,7 +50,7 @@ sudo vi /etc/yaourtrc
 AURURL="https://aur.tuna.tsinghua.edu.cn"
 ```
 
-**安装`yay`**
+**1.1.3 安装`yay`并设置镜源**
 ```
 sudo pacman -S yay
 ```
@@ -64,6 +66,36 @@ yay -P -g
 ```
 ~/.config/yay/config.json
 ```
+
+**1.1.4 SSH公钥**
+
+优先使用自己的备份，记得
+```bash
+sudo chmod 600 ~/.ssh/id_rsa
+```
+
+生成SSH公钥
+```bash
+ssh-keygen
+```
+
+ 查看公约
+```
+cat ~/.ssh/id_rea.pub
+```
+
+**1.1.5 git 设置**
+
+git config 设置
+```bash
+git config --global user.name 'qiujl_Manjaro_PC'
+git config --global user.email 'qiuyue77@outlook.com'
+```
+
+如果出现 git status 不能正常显示中文，输入
+````bash
+git config --global core.quotepath false 
+````
 
 #### 1.2安装font
 中文字体
@@ -260,8 +292,10 @@ Xft.dpi: 200 # 显示器分辨率高的可选择200， 低的可选择不设置
 reboot
 ```
 
-##### 统一安装相关app
+#### 统一安装相关app
+```bash
 sudo pacman -S i3-gaps alacritty dmenu xorg lxappearance feh variety compton polybar
+```
 
 | 名称         | 作用                     | 备注                       |
 |--------------|--------------------------|----------------------------|
@@ -346,7 +380,7 @@ yaourt -S apvlv
 | ranger                 | 目录文件管理器   | 按照下方说明设置                  |
 | w3m                    | 浏览器           | 用于`ranger`预览图片              |
 | apvlv                  | `PDF`阅读器      | 配合`ranger`使用,配置在`~/.apvlv` |
-| docker                 | `docker`虚拟机   | 查看是否自启动                    |
+| docker                 | `docker`虚拟机   | 查看是否自启动,安装`docker-compose`                    |
 | netease-cloud-music    | 网易云音乐       |                                   |
 | wps-office             |                  | 安装`wps`相关字体                 |
 | typora                 | `Markdown`阅读器 |                                   |
@@ -395,14 +429,52 @@ export VISUAL=/usr/bin/nvim
 
 
 ##### docker相关
-```
-# 启动docker服务
+启动docker服务
+```bash
 sudo systemctl start docker
-# 查看docker服务的状态
+```
+查看docker服务的状态
+```bash
 sudo systemctl status docker
-# 设置docker开机启动服务
+```
+设置docker开机启动服务
+```bash
 systemctl enable docker
 ```
+将当前用户添加到`docker`用户组中
+
+```bash
+sudo usermod -aG docker USER_NAME
+sudo gpasswd -a ${USER} docker
+```
+
+添加`docker`镜像
+
+```bash
+sudo nvim /etc/docker/daemon.json
+```
+输入以下内容：
+```
+{
+  "registry-mirrors": ["https://ne7hlub7.mirror.aliyuncs.com"]
+}
+```
+重新加载
+```
+sudo systemctl daemon-reload 
+sudo systemctl restart docker
+```
+
+**安装`docker-compose`**
+```bash
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+查看`docker-compose`版本
+```bash
+docker-compose --version
+```
+
 
 ##### 微信！！！！（未成功）
 ```
@@ -431,7 +503,7 @@ sslocal -c ~/.config/shadowsocks/local.json
 ```
 systemctl start privoxy
 ```
-设定全局代理，编辑`.zshrc`
+设定全局代理，编辑`.zshrc`，复制的`.zshrc`已经设置相关函数
 ```
 export http_proxy=http://127.0.0.1:8118
 export https_proxy=http://127.0.0.1:8118
