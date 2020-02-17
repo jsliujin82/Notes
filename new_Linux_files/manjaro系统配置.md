@@ -315,6 +315,9 @@ sudo pacman -R i3status
 ```
 
 ##### xorg设置
+
+[`xmodmap`详情](https://wiki.archlinux.org/index.php/Xmodmap)
+
 ```
 xmodmap -pke > ~/.xmodmap
 vim ~/.xmodmap
