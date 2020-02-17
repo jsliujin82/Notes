@@ -513,3 +513,24 @@ export https_proxy=http://127.0.0.1:8118
 export ftp_proxy=http://127.0.0.1:8118
 ```
 
+另外的全局代理func
+
+```bash
+proxy () {
+  export ALL_PROXY="socks5://127.0.0.1:1080"
+  export all_proxy="socks5://127.0.0.1:1080"
+  #echo -e "Acquire::http::Proxy \"http://127.0.0.1:1090\";" | sudo tee -a /etc/apt/apt.conf > /dev/nul    l
+  #echo -e "Acquire::https::Proxy \"http://127.0.0.1:1090\";" | sudo tee -a /etc/apt/apt.conf > /dev/nu    ll
+  curl https://ip.gs
+}
+
+ noproxy () {
+   unset ALL_PROXY
+   unset all_proxy
+   #sudo sed -i -e '/Acquire::http::Proxy/d' /etc/apt/apt.conf
+   #sudo sed -i -e '/Acquire::https::Proxy/d' /etc/apt/apt.conf
+   curl https://ip.gs
+ }
+  
+```
+

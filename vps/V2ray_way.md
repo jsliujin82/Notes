@@ -115,7 +115,7 @@ sudo journalctl -b -u v2ray
 
 #### 3. Linux
 
-##### 3.1 非客户端
+##### 3.1 非GUI端
 
 **Ubuntu**
 
@@ -131,6 +131,14 @@ sudo bash <(curl -L -s https://install.direct/go.sh) --local ./v2ray-linux-64.zi
 sudo vim /etc/v2ray/config.json
 ```
 
+使用
+
+```bash
+sudo service v2ray restart
+```
+
+
+
 **Manjaro**
 
 ```
@@ -141,6 +149,12 @@ yay -S v2ray
 
 ```bash
 sudo vim /etc/v2ray/config.json
+```
+
+添加日志路径
+
+```
+sudo mkdir /var/log/v2ray
 ```
 
 然后就可以通过 `systemctl` 来控制 v2ray 的运行了。
@@ -192,7 +206,7 @@ PAC代理方面，不同的Linux桌面环境会有区别，可以自行搜索关
 
 打开设置—Network—Network Proxy，选择Automatic模式，填入file://pac文件绝对路径，如果你的pac配置文件放到了/etc/v2ray/proxy.pac，那么就填入:file:///etc/v2ray/proxy.pac
 
-##### 3.2 客户端
+##### 3.2 GUi端
 
 [GUI客户端项目](https://github.com/jiangxufeng/v2rayL)
 
