@@ -83,12 +83,13 @@ sudo apt install python3-pip
 >    sudo apt install git
 >    ```
 >    **安装oh-my-zsh**
-> 
+>
 >    ```bash
 >    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+>    ```
 >   ```
 > 
->6. **安装autojump激动跳转插件**
+> 6. **安装autojump激动跳转插件**
 > 
 >    [autojump教程](https://www.linuxidc.com/Linux/2015-08/121421.htm)
 > 
@@ -99,14 +100,15 @@ sudo apt install python3-pip
 >   # 在最后一行加入，注意点`.`后面是一个空格
 >    . /usr/share/autojump/autojump.sh
 >    source ~/.zshrc # 生效
->    ```
-> 
+>   ```
+>
 > 7. **安装zsh-syntax-highlighting语法高亮插件**
-> 
+>
 >    ```bash
 >    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
->   echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+>     echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 >    source ~/.zshrc
+>    ```
 >   ```
 > 
 > 8. **安装zsh-autosuggestions语法历史记录插件**
@@ -114,9 +116,9 @@ sudo apt install python3-pip
 >    ```bash
 >    git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 >   ```
-> 
+>
 >   添加到配置：
-> 
+>
 >    ```bash
 >    vim ~/.zshrc
 >   #搜索 plugins=
@@ -128,14 +130,14 @@ sudo apt install python3-pip
 >    source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 >    source ~/.zshrc
 >    ```
-> 
+>
 > 9. ##### 安装z.lua 跳转目录插件
-> 
+>
 >    安装`lua`
 >    ```bash
->   wget http://www.lua.org/ftp/lua-5.3.5.tar.gz
+>     wget http://www.lua.org/ftp/lua-5.3.5.tar.gz
 >    tar -zxvf lua-5.3.5.tar.gz
->   cd lua-5.3.5/
+>     cd lua-5.3.5/
 >    make linux test
 >    ```
 >    如果报错，应该是依赖不全
@@ -153,14 +155,83 @@ sudo apt install python3-pip
 >    eval "$(lua ~/.config/z.lua/z.lua  --init zsh once enhanced)"
 >    ```
 > 10. **配置主题**
-> 
+>
 >    ```bash
 >    sudo vim ~/.zshrc
 >    # 找到ZSH_THEME=，修改=后面引号内的内容
 >    ZSH_THEME="ys"
->   ```
+>    ```
 
 #### 安装常用 app
+
+> #### 安装nodejs
+>
+> 由于`nvim`插件`coc`需要`nodejs`，须先安装
+>
+> ```bash
+> sudo apt install nodejs npm
+> ```
+>
+> 如果`nodejs`，版本太低：
+>
+> ```bash
+> sudo npm cache clean -f
+> sudo npm install -g n
+> sudo n stable
+> ```
+>
+> 更改`npm`镜像源
+>
+> ```bash
+> npm config set registry https://registry.npm.taobao.org
+> ```
+>
+> 安装`cnpm`，使用其他镜像（例子为淘宝镜像）
+>
+> ```bash
+> sudo npm install -g cnpm
+> ```
+>
+> 安装`yarn`及前端脚手架工具
+>
+> ```bash
+> sudo cnpm install -g yarn fis3
+> ```
+>
+> **安装`neovim`**
+>
+> ```
+> sudo pacman -S neovim
+> ```
+>
+> 需要`python2`的支持
+>
+> ```
+> sudo apt install python-pip
+> python2 -m pip install --user --upgrade pynvim
+> ```
+>
+> 需要`python3`的支持
+>
+> ```
+> pip3 install --user pynvim
+> ```
+>
+> 需要`npm,yarn`支持
+>
+> ```
+> sudo npm install -g neovim
+> yarn global add neovim
+> ```
+>
+> nvim与系统之间的复制粘贴，需要`xsel`或`xclip`
+>
+> ```
+> sudo apt install xclip
+> ```
+>
+> 
+
 >    ```bash
 >    sudo apt install ranger neofetch
 >    ```

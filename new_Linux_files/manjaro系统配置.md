@@ -399,7 +399,48 @@ sudo pacman -S chromium
 sudo pacman -U ~/.config/browser/chromium-codecs-ffmpeg-extra.....
 ```
 
+##### 安装texlive
+```bash
+sudo pacman -S texlive-core texlive-bin texlive-most texlive-lang texlive-langchinese texlive-latexextra
+```
+
+
+如果没有安装`latexextra`,这个时候还会出一个神奇的错误,缺少`environ.sty`,也就是`environ.sty not found`.
+
+不过事实上,我们即使安装了,也有可能会出现缺少别的一些东西.
+
+**安装`texlive-localmanager-git`**
+这个是`archlinux`的一个脚本,在`aur`上,需要使用`yaourt`进行安装:
+
+```bash
+yaourt texlive-localmanager-git
+```
+
+**使用`localmanager`安装缺少的部分**
+接下来就是缺什么装什么的时候了,使用`tllocalmgr`进入命令行,之后缺什么install什么就行了 
+大概方法:
+
+```bash
+tllocalmgr
+```
+
+之后在`manager`中,根据缺少的文件名:
+
+```bash
+install packagename
+texhash
+```
+
+注意,一定要使用`texhash`,否则安装没有效果.
+
 ##### ranger配置
+
+预览图片还可用`ueberzug`
+
+```bash
+pip3 install --user ueberzug
+```
+
 初始化ranger config 并改变ranger初始加位置
 ```
 ranger --copy-config=all
@@ -417,6 +458,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 
 默认打开编辑器更改为nvim
 编辑`~/.profile`,将
+
 ```
 export EDITOR=/usr/bin/nano
 ```
@@ -531,6 +573,5 @@ proxy () {
    #sudo sed -i -e '/Acquire::https::Proxy/d' /etc/apt/apt.conf
    curl https://ip.gs
  }
-  
 ```
 
