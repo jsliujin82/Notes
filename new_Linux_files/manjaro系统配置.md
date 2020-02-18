@@ -374,19 +374,20 @@ sudo pacman -S base-devel
 ```bash
 yaourt -S apvlv
 ```
-| 名称                   | 描述             | 备注                              |
-|------------------------|------------------|-----------------------------------|
-| yandex-browser-beta    | `yandex` 浏览器  | H5视频问题                        |
-| visual-studio-code-bin | `vscode`编辑器   | 安装插件                          |
-| vlc                    | 视频播放器       |                                   |
-| virtualbox             | 虚拟机           |                                   |
-| ranger                 | 目录文件管理器   | 按照下方说明设置                  |
-| w3m                    | 浏览器           | 用于`ranger`预览图片              |
-| apvlv                  | `PDF`阅读器      | 配合`ranger`使用,配置在`~/.apvlv` |
-| docker                 | `docker`虚拟机   | 查看是否自启动,安装`docker-compose`                    |
-| netease-cloud-music    | 网易云音乐       |                                   |
-| wps-office             |                  | 安装`wps`相关字体                 |
-| typora                 | `Markdown`阅读器 |                                   |
+| 名称                   | 描述             | 备注                                |
+|------------------------|------------------|-------------------------------------|
+| yandex-browser-beta    | `yandex` 浏览器  | H5视频问题                          |
+| visual-studio-code-bin | `vscode`编辑器   | 安装插件                            |
+| vlc                    | 视频播放器       |                                     |
+| virtualbox             | 虚拟机           |                                     |
+| ranger                 | 目录文件管理器   | 按照下方说明设置                    |
+| w3m                    | 浏览器           | 用于`ranger`预览图片                |
+| pandoc                 | 文档转换器       | 安装相关文档的插件                  |
+| apvlv                  | `PDF`阅读器      | 配合`ranger`使用,配置在`~/.apvlv`   |
+| docker                 | `docker`虚拟机   | 查看是否自启动,安装`docker-compose` |
+| netease-cloud-music    | 网易云音乐       |                                     |
+| wps-office             |                  | 安装`wps`相关字体                   |
+| typora                 | `Markdown`阅读器 |                                     |
 
 ##### chrome开源版chromium
 由于与yandex有冲突，故不安装
