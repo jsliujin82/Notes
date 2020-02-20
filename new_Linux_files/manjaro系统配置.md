@@ -206,11 +206,18 @@ yarn global add neovim
 ```
 
 nvim与系统之间的复制粘贴，需要`xsel`或`xclip`
-```
+```bash
 sudo pacman -S xsel
 ```
 
+复制`nvim`配置，并关联
+
+```bash
+ln init_Manjaro.vim init.vim
+```
+
 #### 更改pacman的状态
+
 ```
 sudo -E vim /etc/pacman.conf
 /Color
@@ -443,10 +450,16 @@ pip3 install --user ueberzug
 ```
 
 初始化ranger config 并改变ranger初始加位置
-```
+```bash
 ranger --copy-config=all
 export RANGER_LOAD_DEFAULT_RC=FALSE
 ```
+解压缩所需依赖`atool`
+
+```bash
+sudo pacman -S atool
+```
+
 复制自己的ranger config
 
 插件[`Ranger Plugin`](https://github.com/ranger/ranger/wiki/Plugins):
