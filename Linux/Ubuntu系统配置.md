@@ -1,3 +1,5 @@
+
+
 ### 1 安装vim
 
 ```bash
@@ -249,6 +251,20 @@ sudo apt install python3-pip
 > ln rc_wsl.conf rc.conf
 > ln rifle_wsl.conf rifle.conf
 > ```
+>
+> 预览图片还可用`ueberzug`
+>
+> ```bash
+> pip3 install --user ueberzug
+> ```
+>
+> 预览代码高亮需要`highlight`,解压缩需要`atool`：
+>
+> ```bash
+> sudo apt install highlight atool
+> ```
+>
+> 
 >
 > **安装其他app**
 >

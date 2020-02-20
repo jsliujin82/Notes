@@ -452,7 +452,14 @@ texhash
 pip3 install --user ueberzug
 ```
 
-初始化ranger config 并改变ranger初始加位置
+预览代码高亮需要`highlight`，解压缩需要`atool`：
+
+```bash
+sudo pacman -S highlight atool
+```
+
+初始化`ranger config` 并改变`ranger`初始加位置
+
 ```
 ranger --copy-config=all
 export RANGER_LOAD_DEFAULT_RC=FALSE
