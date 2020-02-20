@@ -87,43 +87,36 @@ sudo apt install python3-pip
 >    ```bash
 >    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 >    ```
->   ```
-> 
-> 6. **安装autojump激动跳转插件**
-> 
->    [autojump教程](https://www.linuxidc.com/Linux/2015-08/121421.htm)
-> 
->   ```bash
->    sudo apt install autojump
->   cat /usr/share/doc/autojump/README.Debian  # 配置教程
->    vim ~/.zshrc
->   # 在最后一行加入，注意点`.`后面是一个空格
->    . /usr/share/autojump/autojump.sh
->    source ~/.zshrc # 生效
->   ```
 >
-> 7. **安装zsh-syntax-highlighting语法高亮插件**
+> 5. **软连接`zshrc`**
+>
+>    ```bash
+>    cd ~
+>    rm .zshrc
+>    ln ~/.comfig/zsh/wsl_zshcr /zshrc
+>    ```
+>
+> 6. **安装zsh-syntax-highlighting语法高亮插件**
 >
 >    ```bash
 >    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 >     echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 >    source ~/.zshrc
 >    ```
->   ```
-> 
-> 8. **安装zsh-autosuggestions语法历史记录插件**
-> 
+>
+> 7. **安装zsh-autosuggestions语法历史记录插件**
+>
 >    ```bash
 >    git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
->   ```
+>    ```
 >
->   添加到配置：
+>    添加到配置：
 >
 >    ```bash
 >    vim ~/.zshrc
->   #搜索 plugins=
+>    #搜索 plugins=
 >    # 在括号中加上 
->   zsh-autosuggestions # 不同插件用空格隔开
+>    zsh-autosuggestions # 不同插件用空格隔开
 >    # 在plugins 下加上 
 >    setopt no_nomatch  # 如果不加的话就不能使用*
 >    # 在最后一行 添加
@@ -131,7 +124,7 @@ sudo apt install python3-pip
 >    source ~/.zshrc
 >    ```
 >
-> 9. ##### 安装z.lua 跳转目录插件
+> 8. ##### 安装z.lua 跳转目录插件
 >
 >    安装`lua`
 >    ```bash
@@ -154,7 +147,8 @@ sudo apt install python3-pip
 >    ```
 >    eval "$(lua ~/.config/z.lua/z.lua  --init zsh once enhanced)"
 >    ```
-> 10. **配置主题**
+>
+> 9. **配置主题**
 >
 >    ```bash
 >    sudo vim ~/.zshrc
@@ -230,11 +224,41 @@ sudo apt install python3-pip
 > sudo apt install xclip
 > ```
 >
+> 软链接`init.vim`
+>
+> ```bash
+> cd ~/.comfig/nvim/
+> ln init_wsl.vim init.vim
+> ```
+>
+> **安装`ranger`**
+>
+> ```bash
+> cd ~
+> git clone https://github.com/ranger/ranger.git
+> cd ranger
+> sudo make install
+> ```
+>
+> 复制`ranger_config`
+>
+> 然后软连接：
+>
+> ```bash
+> cd ~/.config/ranger
+> ln rc_wsl.conf rc.conf
+> ln rifle_wsl.conf rifle.conf
+> ```
+>
+> **安装其他app**
+>
+> ```bash
+> sudo apt install neofetch
+> ```
+>
 > 
 
->    ```bash
->    sudo apt install ranger neofetch
->    ```
+
 
 #### 安装pycharm
 
