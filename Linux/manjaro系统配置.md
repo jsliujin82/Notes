@@ -187,20 +187,20 @@ vim # 然后等待安装插件
 ```
 
 #### 安装`neovim`
-```
+```bash
 sudo pacman -S neovim
 ```
 需要`python2`的支持
-```
+```bash
 sudo pacman -S python2-pip
 python2 -m pip install --user --upgrade pynvim
 ```
 需要`python3`的支持
-```
+```bash
 pip3 install --user pynvim
 ```
 需要`npm,yarn`支持
-```
+```bash
 sudo npm install -g neovim
 yarn global add neovim
 ```
@@ -210,6 +210,7 @@ nvim与系统之间的复制粘贴，需要`xsel`或`xclip`
 sudo pacman -S xsel
 ```
 
+<<<<<<< HEAD:new_Linux_files/manjaro系统配置.md
 复制`nvim`配置，并关联
 
 ```bash
@@ -218,7 +219,18 @@ ln init_Manjaro.vim init.vim
 
 #### 更改pacman的状态
 
+=======
+软链接`init.vim`
+
+```bash
+cd ~/.comfig/nvim/
+ln init_Manjaro.vim init.vim
+>>>>>>> a40c069:Linux/manjaro系统配置.md
 ```
+
+#### 更改pacman的状态
+
+```bash
 sudo -E vim /etc/pacman.conf
 /Color
 # 去掉Color前的备注
@@ -256,9 +268,11 @@ cat /etc/shells
 chsh -s /bin/zsh
 chsh -s /usr/bin/zsh
 ```
-复制粘贴自己的zshrc
+软连接自己的zshrc
 ```bash
-cp ~/.config/zsh/zshrc ~/.zshrc
+cd ~
+rm .zshrc
+ln ~/.config/zsh/Manjaro_zshrc ~/.zshrc
 ```
 **注意修改'zsh'路径**
 
@@ -449,6 +463,7 @@ texhash
 pip3 install --user ueberzug
 ```
 
+<<<<<<< HEAD:new_Linux_files/manjaro系统配置.md
 初始化ranger config 并改变ranger初始加位置
 ```bash
 ranger --copy-config=all
@@ -461,6 +476,27 @@ sudo pacman -S atool
 ```
 
 复制自己的ranger config
+=======
+预览代码高亮需要`highlight`，解压缩需要`atool`：
+
+```bash
+sudo pacman -S highlight atool
+```
+
+初始化`ranger config` 并改变`ranger`初始加位置
+
+```
+ranger --copy-config=all
+export RANGER_LOAD_DEFAULT_RC=FALSE
+```
+然后软连接自己的`ranger config`：
+
+```bash
+cd ~/.config/ranger
+ln rc_Manjaro.conf rc.conf
+ln rifle_Manjaro.conf rifle.conf
+```
+>>>>>>> a40c069:Linux/manjaro系统配置.md
 
 插件[`Ranger Plugin`](https://github.com/ranger/ranger/wiki/Plugins):
 
