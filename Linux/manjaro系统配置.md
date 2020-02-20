@@ -219,7 +219,6 @@ ln init_Manjaro.vim init.vim
 
 #### 更改pacman的状态
 
-=======
 软链接`init.vim`
 
 ```bash
@@ -476,7 +475,6 @@ sudo pacman -S atool
 ```
 
 复制自己的ranger config
-=======
 预览代码高亮需要`highlight`，解压缩需要`atool`：
 
 ```bash
