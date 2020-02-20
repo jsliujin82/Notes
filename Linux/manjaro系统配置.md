@@ -214,7 +214,7 @@ sudo pacman -S xsel
 
 ```bash
 cd ~/.comfig/nvim/
-ln init_wsl.vim init.vim
+ln init_Manjaro.vim init.vim
 ```
 
 #### 更改pacman的状态
