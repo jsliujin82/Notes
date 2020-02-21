@@ -512,10 +512,10 @@ texhash
 pip3 install --user ueberzug
 ```
 
-预览代码高亮需要`highlight`，解压缩需要`atool`：
+预览代码高亮需要`bat`，解压缩需要`atool`：
 
 ```bash
-sudo pacman -S highlight atool
+sudo pacman -S bat atool
 ```
 
 初始化`ranger config` 并改变`ranger`初始加位置

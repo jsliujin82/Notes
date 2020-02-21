@@ -258,10 +258,10 @@ sudo apt install python3-pip
 > pip3 install --user ueberzug
 > ```
 >
-> 预览代码高亮需要`highlight`,解压缩需要`atool`：
+> 预览代码高亮需要`bat`,解压缩需要`atool`：
 >
 > ```bash
-> sudo apt install highlight atool
+> sudo apt install bat atool
 > ```
 >
 > 
