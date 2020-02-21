@@ -97,22 +97,52 @@ git config --global user.email 'qiuyue77@outlook.com'
 git config --global core.quotepath false 
 ````
 
+**1.1.6 pip修改pip3源**
+可直接复制`.config`中的`.pip`文件
+```bash
+mkdir ~/.pip
+vim ~/.pip/pip.conf
+```
+
+```
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+trusted-host = pypi.tuna.tsinghua.edu.cn
+```
+
 #### 1.2安装font
 中文字体
 ```bash
 yay -S wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei adobe-source-han-mono-cn-fonts adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts nerd-fonts-source-code-pro
 ```
 `wps`需要字体
-```
+
+```bash
 sudo pacman -S ttf-wps-fonts
 ```
 `Emoji`
-```
+
+```bash
 yay -S ttf-linux-libertine ttf-inconsolata ttf-joypixels ttf-twemoji-color noto-fonts-emoji ttf-liberation ttf-droid
 ```
 
+查看系统中的字体（中文字体）
+
+```bash
+fc-list
+fc-list :lang=zh
+```
+
+编辑`/etc/local.conf`
+
+```bash
+
+```
+
+
 
 #### 1.3耳机声卡设置
+
 ```bash
 sudo pacman -S pavucontrol
 pavucontrol
@@ -210,21 +240,11 @@ nvim与系统之间的复制粘贴，需要`xsel`或`xclip`
 sudo pacman -S xsel
 ```
 
-<<<<<<< HEAD:new_Linux_files/manjaro系统配置.md
-复制`nvim`配置，并关联
-
-```bash
-ln init_Manjaro.vim init.vim
-```
-
-#### 更改pacman的状态
-
-软链接`init.vim`
+复制`nvim`配置，设置软链接`init.vim`
 
 ```bash
 cd ~/.comfig/nvim/
 ln init_Manjaro.vim init.vim
->>>>>>> a40c069:Linux/manjaro系统配置.md
 ```
 
 #### 更改pacman的状态
@@ -462,19 +482,6 @@ texhash
 pip3 install --user ueberzug
 ```
 
-<<<<<<< HEAD:new_Linux_files/manjaro系统配置.md
-初始化ranger config 并改变ranger初始加位置
-```bash
-ranger --copy-config=all
-export RANGER_LOAD_DEFAULT_RC=FALSE
-```
-解压缩所需依赖`atool`
-
-```bash
-sudo pacman -S atool
-```
-
-复制自己的ranger config
 预览代码高亮需要`highlight`，解压缩需要`atool`：
 
 ```bash
@@ -487,6 +494,8 @@ sudo pacman -S highlight atool
 ranger --copy-config=all
 export RANGER_LOAD_DEFAULT_RC=FALSE
 ```
+
+复制自己的ranger config
 然后软连接自己的`ranger config`：
 
 ```bash
@@ -494,7 +503,6 @@ cd ~/.config/ranger
 ln rc_Manjaro.conf rc.conf
 ln rifle_Manjaro.conf rifle.conf
 ```
->>>>>>> a40c069:Linux/manjaro系统配置.md
 
 插件[`Ranger Plugin`](https://github.com/ranger/ranger/wiki/Plugins):
 

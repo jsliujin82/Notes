@@ -150,6 +150,7 @@ yay -S v2ray
 ```bash
 sudo vim /etc/v2ray/config.json
 ```
+写完以后要把`vpoint_vmess_freedom.json`删除
 
 添加日志路径
 

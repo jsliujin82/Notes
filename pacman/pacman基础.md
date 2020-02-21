@@ -6,7 +6,7 @@
 | pacman -Su                | #更新系统                                   |
 | pacman -Syu               | #先同步源，并更新系统                       |
 | pacman -Syyu              | #强制先同步源，并更新系统                   |
-| pacman -Sc                | #清理/var/cache/pacman/pkg目录下的旧包      |
+| pacman -Sc                | #清理`/var/cache/pacman/pkg`目录下的旧包      |
 | pacman -Scc               | #清除所有下载的包和数据库                   |
 | pacman -S   abc           | #从本地数据库中得到abc的信息，下载安装abc包 |
 | pacman -Si abc            | #从数据库中搜索包abc的信息                  |
@@ -33,5 +33,5 @@
 | pacman -Su --ignore foo   | #升级时不升级包foo                          |
 | pacman -Sg abc            | #查询abc这个包组包含的软件包                |
 #### pacman 配置
-配置文件在/etc/pacman.config
+配置文件在`/etc/pacman.config`
 
