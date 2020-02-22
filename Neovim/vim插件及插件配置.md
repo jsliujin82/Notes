@@ -1,3 +1,157 @@
+[知乎vim](https://zhuanlan.zhihu.com/hack-vim)
+```
+" Pretty Dress
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'connorholyday/vim-snazzy'
+"Plug 'NLKNguyen/papercolor-theme'
+"Plug 'ayu-theme/ayu-vim'
+Plug 'bling/vim-bufferline'
+
+" Genreal Highlighter
+Plug 'jaxbot/semantic-highlight.vim'
+Plug 'chrisbra/Colorizer' " Show colors with :ColorHighlight
+
+" File navigation
+"Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'junegunn/fzf.vim'
+Plug 'francoiscabrol/ranger.vim'
+
+" Taglist
+Plug 'liuchengxu/vista.vim'
+"Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
+
+" Debugger
+Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
+
+" REPL
+Plug 'rhysd/reply.vim'
+
+" Error checking, handled by coc
+"Plug 'w0rp/ale'
+
+" Auto Complete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Snippits
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Undo Tree
+Plug 'mbbill/undotree'
+
+" Git
+Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
+Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
+"Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
+
+" Tex
+"Plug 'lervag/vimtex'
+
+" CSharp
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] } " omnisharp-vim dependency
+
+" HTML, CSS, JavaScript, PHP, JSON, etc.
+Plug 'elzr/vim-json'
+Plug 'hail2u/vim-css3-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
+Plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+"Plug 'jaxbot/browserlink.vim'
+
+" Go
+Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
+
+" Python
+Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
+Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
+"Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
+"Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
+Plug 'tweekmonster/braceless.vim'
+
+" Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
+
+" Other filetypes
+Plug 'jceb/vim-orgmode', {'for': ['vim-plug', 'org']}
+
+" Editor Enhancement
+"Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/nerdcommenter' " in <space>cn to comment a line
+Plug 'AndrewRadev/switch.vim' " gs to switch
+Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
+https://zhuanlan.zhihu.com/p/39795852
+https://github.com/tpope/vim-surround
+Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
+Plug 'junegunn/vim-after-object' " da= to delete what's after =
+Plug 'junegunn/vim-easy-align' " gaip= to align the = in paragraph, 
+Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
+Plug 'easymotion/vim-easymotion'
+Plug 'Konfekt/FastFold'
+Plug 'junegunn/vim-peekaboo'
+Plug 'bkad/CamelCaseMotion'
+"Plug 'wellle/context.vim'
+
+" Input Method Autoswitch
+"Plug 'rlue/vim-barbaric' " slowing down vim-multiple-cursors
+
+" Formatter
+Plug 'Chiel92/vim-autoformat'
+
+" For general writing
+Plug 'junegunn/goyo.vim'
+"Plug 'reedes/vim-wordy'
+"Plug 'ron89/thesaurus_query.vim'
+
+" Bookmarks
+"Plug 'kshenoy/vim-signature'
+Plug 'MattesGroeger/vim-bookmarks'
+
+" Find & Replace
+Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+Plug 'osyo-manga/vim-anzu'
+
+" Documentation
+"Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
+
+" Mini Vim-APP
+"Plug 'voldikss/vim-floaterm'
+"Plug 'liuchengxu/vim-clap'
+"Plug 'jceb/vim-orgmode'
+Plug 'mhinz/vim-startify'
+Plug 'theniceboy/vim-leader-mapper'
+
+" Vim Applications
+Plug 'itchyny/calendar.vim'
+
+" Other visual enhancement
+Plug 'ryanoasis/vim-devicons'
+Plug 'luochen1990/rainbow'
+" Plug 'mg979/vim-xtabline'
+Plug 'wincent/terminus'
+
+" Other useful utilities
+Plug 'lambdalisue/suda.vim' " do stuff like :SudoWrite
+Plug 'makerj/vim-pdf'
+"Plug 'xolox/vim-session'
+"Plug 'xolox/vim-misc' " vim-session dep
+Plug 'semanser/vim-outdated-plugins'
+
+" Dependencies
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'kana/vim-textobj-user'
+Plug 'roxma/nvim-yarp'
+Plug 'rbgrouleff/bclose.vim' " For ranger.vim
+```
 ### 1. MarkDown相关
 
 #### [markdown文档格式](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
