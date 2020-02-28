@@ -274,7 +274,7 @@ sudo pacman -S xsel
 
 ```bash
 cd ~/.comfig/nvim/
-ln init_Manjaro.vim init.vim
+ln -s init_Manjaro.vim init.vim
 ```
 
 #### 更改pacman的状态
@@ -317,11 +317,18 @@ cat /etc/shells
 chsh -s /bin/zsh
 chsh -s /usr/bin/zsh
 ```
-软连接自己的zshrc
+修改`zsh/zshrc`中`ZSH`路径,以免报错
+
+```bash
+export ZSH="/home/xxxx/.oh-my-zsh"
+```
+
+建立软连接
+
 ```bash
 cd ~
 rm .zshrc
-ln ~/.config/zsh/Manjaro_zshrc ~/.zshrc
+ln -s ~/.config/zsh/Manjaro_zshrc ~/.zshrc
 ```
 **注意修改'zsh'路径**
 
@@ -530,8 +537,8 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 
 ```bash
 cd ~/.config/ranger
-ln rc_Manjaro.conf rc.conf
-ln rifle_Manjaro.conf rifle.conf
+ln -s rc_Manjaro.conf rc.conf
+ln -s rifle_Manjaro.conf rifle.conf
 ```
 
 插件[`Ranger Plugin`](https://github.com/ranger/ranger/wiki/Plugins):

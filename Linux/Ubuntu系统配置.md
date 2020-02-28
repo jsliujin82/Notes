@@ -92,10 +92,18 @@ sudo apt install python3-pip
 >
 > 5. **软连接`zshrc`**
 >
+>    修改`zsh/zshrc`中`ZSH`路径,以免报错
+>
+>    ```bash
+>    export ZSH="/home/xxxx/.oh-my-zsh"
+>    ```
+>
+>    
+>
 >    ```bash
 >    cd ~
 >    rm .zshrc
->    ln ~/.comfig/zsh/wsl_zshcr /zshrc
+>    ln -s ~/.comfig/zsh/wsl_zshcr /zshrc
 >    ```
 >
 > 6. **安装zsh-syntax-highlighting语法高亮插件**
@@ -130,9 +138,9 @@ sudo apt install python3-pip
 >
 >    安装`lua`
 >    ```bash
->     wget http://www.lua.org/ftp/lua-5.3.5.tar.gz
+>    wget http://www.lua.org/ftp/lua-5.3.5.tar.gz
 >    tar -zxvf lua-5.3.5.tar.gz
->     cd lua-5.3.5/
+>    cd lua-5.3.5/
 >    make linux test
 >    ```
 >    如果报错，应该是依赖不全

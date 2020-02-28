@@ -154,7 +154,7 @@ wslconfig /u Ubuntu
 
    
 
-4. #### `git clone` 自己定义的`config`文件
+4. #### Git 
 
    1. `git`设置
 
@@ -167,15 +167,25 @@ wslconfig /u Ubuntu
 
       
 
-      如果出现 `git status `不能正常显示中文，输入
+      #### 报错
 
-      ```bash
-      git config --global core.quotepath false 
-      ```
+      1. 如果出现 `git status `不能正常显示中文，输入
 
-      
+         ```bash
+         git config --global core.quotepath false 
+         ```
 
-   2. `.config`
+         
+
+      2. 如果出现不同系统对换行的识别不到位导致的错误
+
+         ```bash
+         git config --global core.autocrlf false
+         ```
+
+         
+
+   2. `git clone` 自己定义的`config`文件
 
       ```bash
       git clone git@github.com:qiuyue77/.config.git ~/.config
@@ -222,98 +232,108 @@ wslconfig /u Ubuntu
 
       
 
-   5. 软连接`zshrc`
+   5. 设置`zshrc`
+
+      修改`zsh/zshrc`中`ZSH`路径
+
+      ```bash
+      export ZSH="/home/XXX/.oh-my-zsh"
+      ```
+
+      创建软连接
 
       ```bash
       cd ~
       rm .zshrc
-      ln -s ~/.comfig/zsh/zshcr /zshrc
+      ln -s ~/.config/zsh/zshrc .zshrc
       ```
 
       
 
-      1. 
+   6. 安装语法建议、语法高亮插件
 
-   6. 
+      ```bash
+      git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+      ```
 
-   > 1. **软连接`zshrc`**
-   >
-   >    ```bash
-   >    cd ~
-   >    rm .zshrc
-   >    ln ~/.comfig/zsh/wsl_zshcr /zshrc
-   >    ```
-   >
-   > 2. **安装zsh-syntax-highlighting语法高亮插件**
-   >
-   >    ```bash
-   >    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-   >     echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-   >    source ~/.zshrc
-   >    ```
-   >
-   > 3. **安装zsh-autosuggestions语法历史记录插件**
-   >
-   >    ```bash
-   >    git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-   >    ```
-   >
-   >    添加到配置：
-   >
-   >    ```bash
-   >    vim ~/.zshrc
-   >    #搜索 plugins=
-   >    # 在括号中加上 
-   >    zsh-autosuggestions # 不同插件用空格隔开
-   >    # 在plugins 下加上 
-   >    setopt no_nomatch  # 如果不加的话就不能使用*
-   >    # 在最后一行 添加
-   >    source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-   >    source ~/.zshrc
-   >    ```
-   >
-   > 4. ##### 安装z.lua 跳转目录插件
-   >
-   >    安装`lua`
-   >
-   >    ```bash
-   >     wget http://www.lua.org/ftp/lua-5.3.5.tar.gz
-   >    tar -zxvf lua-5.3.5.tar.gz
-   >     cd lua-5.3.5/
-   >    make linux test
-   >    ```
-   >
-   >    如果报错，应该是依赖不全
-   >
-   >    ```bash
-   >    sudo apt install libreadline7 libreadline-dev
-   >    make linux test
-   >    make install
-   >    ```
-   >
-   >    安装`z.lua`
-   >
-   >    ```bash
-   >    cd .config && git clone https://github.com/skywind3000/z.lua.git
-   >    ```
-   >
-   >    在`.zshrc` 中添加
-   >
-   >    ```
-   >    eval "$(lua ~/.config/z.lua/z.lua  --init zsh once enhanced)"
-   >    ```
-   >
-   > 5. **配置主题**
-   >
-   >    ```bash
-   >    sudo vim ~/.zshrc
-   >    # 找到ZSH_THEME=，修改=后面引号内的内容
-   >    ZSH_THEME="ys"
-   >    ```
+      
 
-   #### 
+   7. 安装`z.lua` 跳转目录插件
 
-6. #### 安装neovim
+      安装`lua`及依赖
+
+      ```bash
+      # 依赖
+      sudo apt install libreadline7 libreadline-dev 
+      wget http://www.lua.org/ftp/lua-5.3.5.tar.gz
+      tar -zxvf lua-5.3.5.tar.gz && cd lua-5.3.5/ && make linux test
+      sudo make isntall
+      ```
+
+      安装`z.lua`
+
+      ```bash
+      cd .config && git clone https://github.com/skywind3000/z.lua.git
+      ```
+
+      在`.zshrc` 中添加(如果复制了`config`,则不用添加)
+
+      ```bash
+      eval "$(lua ~/.config/z.lua/z.lua  --init zsh once enhanced)"
+      ```
+
+      
+
+   8. ```bash
+      cd .config && git clone https://github.com/skywind3000/z.lua.git
+      ```
+
+      在`.zshrc` 中添加,如果已复制`config`可不用添加
+
+      ```bash
+      eval "$(lua ~/.config/z.lua/z.lua  --init zsh once enhanced)"
+      ```
+
+      
+
+6. #### 安装nodejs
+
+   由于`nvim`插件`coc`需要`nodejs`，须先安装
+
+   ```bash
+   sudo apt install nodejs npm
+   ```
+
+   如果执行`nodejs`时显示版本太低：
+
+   ```bash
+   sudo npm cache clean -f
+   sudo npm install -g n
+   sudo n stable
+   ```
+
+   更改`npm`镜像源
+
+   ```bash
+   npm config set registry https://registry.npm.taobao.org
+   ```
+
+   安装`cnpm`，使用其他镜像（例子为淘宝镜像）
+
+   ```bash
+   sudo npm install -g cnpm
+   ```
+
+   安装`yarn`及前端脚手架工具
+
+   ```bash
+   sudo cnpm install -g yarn fis3
+   ```
+
+   
+
+7. #### 安装`neovim`
 
    1. 此方法会安装的`nvim`最新版本:
 
@@ -338,15 +358,84 @@ wslconfig /u Ubuntu
 
    2. 检查`checkhealth`
 
+      根据所报错误,安装依赖:
+
+      需要`python2`的支持
+
+      ```
+      sudo apt install python-pip
+      python2 -m pip install --user --upgrade pynvim
+      ```
+
+      需要`python3`的支持
+
+      ```
+      pip3 install --user pynvim
+      ```
+
+      需要`npm,yarn`支持
+
+      ```
+      sudo npm install -g neovim
+      yarn global add neovim
+      ```
+
+      nvim与系统之间的复制粘贴，需要`xsel`或`xclip`
+
+      ```
+      sudo apt install xclip
+      ```
+
+      
+
+8. #### 安装 ranger
+
    ```bash
-   sudo apt install software-properties-common
+   cd ~ && git clone https://github.com/ranger/ranger.git
+   cd ranger && sudo make install
+   ```
+
+   预览代码高亮需要`bat`,解压缩需要`atool`：
+
+   ```bash
+   sudo apt install bat atool
    ```
 
    
 
-7. 
+9. #### 安装`FZF`
 
-8. 还有
+10. #### 安装`docker`和`docker-compose`
+
+    ```bash
+    sudo apt install docker.io
+    ```
+
+    编辑`~/.zshrc`,添加:   {如果是复制`config`,可不用添加)
+
+    ```bash
+    export DOCKER_HOST='tcp://0.0.0.0:2375'
+    ```
+
+    将当前用户 添加到docker用户组中
+
+    ```bash
+    sudo usermod -aG docker USER_NAME
+    sudo gpasswd -a ${USER} docker
+    ```
+
+    查看docker-compose 最新版本 [网址](https://github.com/docker/compose/releases)
+
+    安装docker-compose
+
+    ```bash
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    docker-compose --version
+    ```
+
+    
+
 
 ### WSL相关问题
 
@@ -358,9 +447,7 @@ wslconfig /u Ubuntu
    sudo passwd root
    ```
 
-   
-
-2. 还有
+2. 
 
 
 
