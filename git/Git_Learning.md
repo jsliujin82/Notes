@@ -41,6 +41,16 @@
 ```
     git log
 ```
+>>9.1 查看文件的`commit`记录
+``` 
+    git log filename
+```
+
+>>9.2 查看文件每次提交的`diff`
+```
+    git log -p filename
+```
+
 >>10. 查看日志的大概情况
 ```
     git reflog
