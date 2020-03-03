@@ -268,8 +268,16 @@ sudo apt install python3-pip
 >
 > 预览代码高亮需要`bat`,解压缩需要`atool`：
 >
+> `bat`在Ubuntu中不一定能通过`apt`下载,因此可以通过安装包`deb`安装,[下载地址](https://github.com/sharkdp/bat/releases)
+>
 > ```bash
-> sudo apt install bat atool
+> sudo dpkg -i bat_0.12.1_amd64.deb
+> ```
+>
+> 安装`atool`
+>
+> ```bash
+> sudo apt install atool
 > ```
 >
 > 

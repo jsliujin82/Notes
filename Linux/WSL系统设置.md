@@ -1,4 +1,10 @@
+## Windows Terminal 相关设置
+
 Windows Terminal 设置见[***网页***](https://www.jianshu.com/p/31bf9f9c0fb1)
+
+Windows Terminal 主题设置见[***网页***](https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master/windowsterminal)
+
+
 
 ## WSL 安装
 
@@ -7,28 +13,91 @@ Windows Terminal 设置见[***网页***](https://www.jianshu.com/p/31bf9f9c0fb1)
 1. 在“设置”-“更新与安全”-“开发者选项”选项中，启用开发人员模式。
 2. 在“控制面板”-“程序”-“启用或关闭`Windows`功能”，确认“`Windows Subsystem for Linux（Beta）`”功能为勾选状态。
 
+### 启用WSL2
+
+1. #### `windows10`的版本要求于`Windows 10 18917`及其之上的版本.若版本升级最新也不够,则可通过升级`Windows Insider`来达到版本升级,
+
+   可通过`cmd`查看当前`Windows`版本
+
+   ```bash
+   ver
+   ```
+
+   
+
+2. #### 启用虚拟机平台可选组件
+
+   在`PowerShell`中以管理员身份运行以下命令:
+
+   ```powershell
+   dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+   dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+   ```
+
+   完成后,重启电脑.
+
+   
+
+3. #### 设置`WSL`发行版为`WSL2`,在`PowerShell`中运行:
+
+   将默认的`WSL`发行版设置成为`WSL2`
+
+   ```powershell
+   wsl --set-default-version 2
+   ```
+
+   
+
+   如果已经安装了某个发行版,则可以单独设置某个发行版为`wsl2`,如:
+
+   ```powershell
+   wsl --set-version Ubuntu-18.04 2
+   ```
+
+   
+
+   验证使用的`WSL`版本
+
+   ```powershell
+   wsl -l -v
+   ```
+
+   
+
 ### WSL 安装
 
-“应用商店”中搜索“Ubuntu”，安装“Ubuntu-18.04”，安装结束后
+​	“应用商店”中搜索`Ubuntu`，安装`Ubuntu-18.04`，安装结束后,
 
-在`Windows Terminal`中设置并打开
+​	首次打开需要打开`Ubuntu 18.04`,初始化并设置密码
+
+​	之后均可在设置好了的`Windows Terminal`中打开
 
 ### WSL卸载
 
-WSL的卸载操作如下：
+在`cmd`中以管理员身份运行：
 
-```bash
-wslconfig /l
-# 从列表中选择要卸载的发行版（例如Ubuntu）并键入命令
-wslconfig /u Ubuntu
-```
++ 列出已安装的发行版
+
+  ```PowerShell
+  wslconfig /l
+  ```
+
+  
+
++ 删除指定发行版,如删除`Ubuntu-18.04`
+
+  ```powershell
+  wslconfig /u Ubuntu-18.04
+  ```
+
+  
 
 ### WSL 设置
 
 1. #### 修改`apt`源:
 
    ```bash
-   sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
+   sudo mv /etc/apt/sources.list /etc/apt/sources.list.backup
    sudo vim /etc/apt/sources.list
    ```
 
@@ -188,7 +257,7 @@ wslconfig /u Ubuntu
    2. `git clone` 自己定义的`config`文件
 
       ```bash
-      git clone git@github.com:qiuyue77/.config.git ~/.config
+      git clone git@github.com:qiuyue77/wsl_config.git ~/.config
       ```
 
       
@@ -271,32 +340,22 @@ wslconfig /u Ubuntu
       sudo make isntall
       ```
 
-      安装`z.lua`
-
-      ```bash
-      cd .config && git clone https://github.com/skywind3000/z.lua.git
-      ```
-
-      在`.zshrc` 中添加(如果复制了`config`,则不用添加)
-
-      ```bash
-      eval "$(lua ~/.config/z.lua/z.lua  --init zsh once enhanced)"
-      ```
-
       
 
-   8. ```bash
-      cd .config && git clone https://github.com/skywind3000/z.lua.git
+   8. 安装`z.lua`
+      
+      ```bash
+cd .config && git clone https://github.com/skywind3000/z.lua.git
       ```
 
       在`.zshrc` 中添加,如果已复制`config`可不用添加
-
-      ```bash
-      eval "$(lua ~/.config/z.lua/z.lua  --init zsh once enhanced)"
-      ```
-
       
-
+      ```bash
+eval "$(lua ~/.config/z.lua/z.lua  --init zsh once enhanced)"
+      ```
+   
+      
+   
 6. #### 安装nodejs
 
    由于`nvim`插件`coc`需要`nodejs`，须先安装
@@ -391,11 +450,19 @@ wslconfig /u Ubuntu
 8. #### 安装 ranger
 
    ```bash
-   cd ~ && git clone https://github.com/ranger/ranger.git
-   cd ranger && sudo make install
+   cd ~ && git clone https://github.com/ranger/ranger.git ~/.ranger
+   cd .ranger && sudo make install
    ```
 
    预览代码高亮需要`bat`,解压缩需要`atool`：
+
+   `bat`在Ubuntu中不一定能通过`apt`下载,因此可以通过安装包`deb`安装,[下载地址](https://github.com/sharkdp/bat/releases)
+
+   ```bash
+   sudo dpkg -i bat_0.12.1_amd64.deb
+   ```
+
+   安装`atool`
 
    ```bash
    sudo apt install bat atool
@@ -448,8 +515,6 @@ wslconfig /u Ubuntu
    ```
 
 2. 
-
-
 
 
 
