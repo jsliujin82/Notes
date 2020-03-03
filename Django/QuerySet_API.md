@@ -1,35 +1,34 @@
 **API目录**
-
-```text
-<1>all():         查询所有结果
-<2>filter(**kwargs)    它包含了与所给筛选条件相匹配的对象
-<3>get(**kwargs):     返回与所给筛选条件相匹配的对象，返回结果有且只有一个，如果符合筛选条件的对象超过一个或者没有都会抛出错误。
-<4>exclude(**kwargs)    它包含了与所给筛选条件不匹配的对象
-<5>values(*field)     返回一个ValueQuerySet 一个特殊的QuerySet，运行后得到的并不是一系列model的实例化对象，而是一个可迭代的字典序列
-<6>values_list(*field)   它与values()非常相似，它返回的是一个元组序列，values返回的是一个字典序列
-<7>order_by(*field)    对查询结果排序
-<8>reverse()        对查询结果反向排序
-<9>distinct()       从返回结果中剔除重复纪录
-<10>count()        返回数据库中匹配查询(QuerySet)的对象数量。
-<11>first()        返回第一条记录
-<12>last()         返回最后一条记录
-<13>exists()        如果QuerySet包含数据，就返回True，否则返回False
-<14>annotate()       使用聚合函数
-<15>dates()        根据日期获取查询集
-<16>datetimes()      根据时间获取查询集
-<17>none()         创建空的查询集
-<18>union()        并集
-<19>intersection()     交集
-<21>difference()      差集
-<22>select_related()    附带查询关联对象
-<23>prefetch_related()   预先查询
-<24>extra()        附加SQL查询
-<25>defer()        不加载指定字段
-<26>only()         只加载指定的字段
-<27>using()        选择数据库
-<28>select_for_update()  锁住选择的对象，直到事务结束。
-<29>raw()         接收一个原始的SQL查询
-```
+| API                 | 说明                                                                                                          |
+|---------------------|---------------------------------------------------------------------------------------------------------------|
+| all()               | 查询所有结果                                                                                                  |
+| filter(**kwargs)    | 它包含了与所给筛选条件相匹配的对象                                                                            |
+| get(**kwargs)       | 返回与所给筛选条件相匹配的对象，返回结果有且只有一个，如果符合筛选条件的对象超过一个或者没有都会抛出错误      |
+| exclude(**kwargs)   | 它包含了与所给筛选条件不匹配的对象                                                                            |
+| values(*field)      | 返回一个ValueQuerySet 一个特殊的QuerySet，运行后得到的并不是一系列model的实例化对象，而是一个可迭代的字典序列 |
+| values_list(*field) | 它与values()非常相似，它返回的是一个元组序列，values返回的是一个字典序列                                      |
+| order_by(*field)    | 对查询结果排序                                                                                                |
+| reverse()           | 对查询结果反向排序                                                                                            |
+| distinct()          | 从返回结果中剔除重复纪录                                                                                      |
+| count()             | 返回数据库中匹配查询(QuerySet)的对象数量。                                                                    |
+| first()             | 返回第一条记录                                                                                                |
+| last()              | 返回最后一条记录                                                                                              |
+| exists()            | 如果QuerySet包含数据，就返回True，否则返回False                                                               |
+| annotate()          | 使用聚合函数                                                                                                  |
+| dates()             | 根据日期获取查询集                                                                                            |
+| datetimes()         | 根据时间获取查询集                                                                                            |
+| none()              | 创建空的查询集                                                                                                |
+| union()             | 并集                                                                                                          |
+| intersection()      | 交集                                                                                                          |
+| difference()        | 差集                                                                                                          |
+| select_related()    | 附带查询关联对象                                                                                              |
+| prefetch_related()  | 预先查询                                                                                                      |
+| extra()             | 附加SQL查询                                                                                                   |
+| defer()             | 不加载指定字段                                                                                                |
+| only()              | 只加载指定的字段                                                                                              |
+| using()             | 选择数据库                                                                                                    |
+| select_for_update() | 锁住选择的对象，直到事务结束。                                                                                |
+| raw()               | 接收一个原始的SQL查询                                                                                         |
 
 **1、检索所有对象all()**
 

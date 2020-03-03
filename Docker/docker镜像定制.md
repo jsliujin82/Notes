@@ -146,7 +146,7 @@ docker push qiuyue77/python3.7:latest
 
 
 
-#### 如果不能删除镜像，可能是有子镜像，需要先
+#### 如果不能删除镜像，可能是有子镜像，需要先执行
 
 ```bash
 docker image inspect --format='{{.RepoTags}} {{.Id}} {{.Parent}}' $(docker image ls -q --filter since=XXX) # XXX指镜像ID
