@@ -1,5 +1,20 @@
 ## 配置
 
+### 代理设置
+
+#### 设置代理
+
+```bash
+git config --global https.proxy http://127.0.0.1:1080 
+git config --global https.proxy https://127.0.0.1:1080 
+```
+
+#### 取消代理
+
+```bash
+git config --global --unset http.proxy 
+git config --global --unset https.proxy
+```
 
 
 ## 疑难
@@ -9,17 +24,17 @@
 编辑 /etc/gitconfig，末尾增加以下内容
 
 ```bash
-[gui]  
-    encoding = utf-8  
-    # 代码库统一使用utf-8  
-[i18n]  
-    commitencoding = utf-8  
-    # log编码  
-[svn]  
-    pathnameencoding = utf-8  
-    # 支持中文路径  
+[gui]
+    encoding = utf-8
+    # 代码库统一使用utf-8
+[i18n]
+    commitencoding = utf-8
+    # log编码
+[svn]
+    pathnameencoding = utf-8
+    # 支持中文路径
 [core]
-    quotepath = false 
+    quotepath = false
     # status引用路径不再是八进制（反过来说就是允许显示中文了）
 ```
 
@@ -27,7 +42,7 @@
 
 ```bash
 # 让ls命令能够正常显示中文
-alias ls='ls --show-control-chars --color=auto' 
+alias ls='ls --show-control-chars --color=auto'
 ```
 
 编辑/etc/inputrc，修改output-meta 和 convert-meta 属性值
