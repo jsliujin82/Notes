@@ -110,7 +110,7 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
          因为国外服务器下载速度太慢,可更换为国内源进行下载,以版本`3.8.2`为例
 
          ```bash
-         v=3.8.2;wget http://mirrors.sohu.com/python/$v/Python-$v.tar.xz -P ~/.pyenv/cache/;pyenv install $v
+         v=3.6.8;wget http://mirrors.sohu.com/python/$v/Python-$v.tar.xz -P ~/.pyenv/cache/;pyenv install $v
          ```
 
          + 其中`v=3.8.3 `表示将要安装的版本
