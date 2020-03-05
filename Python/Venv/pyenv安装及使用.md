@@ -2,25 +2,23 @@
 
 ### 安装依赖:
 
-1. #### 在`Ubuntu`:
+1. #### 在`Ubuntu`
 
    ```bash
    sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
    libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev \
    xz-utils tk-dev libffi-dev liblzma-dev python-openssl
-   
+
    sudo apt install libedit-dev
    ```
 
-2. #### 在`Manjaro`:
+2. #### 在`Manjaro`
 
    ```bash
    pacman -S --needed base-devel openssl zlib bzip2 readline sqlite llvm ncurses xz tk libffi python-pyopenssl 
-   
+
    yay -S ncurses5-compat-libs
    ```
-   
-
 
 ### 安装`pyenv`
 
@@ -39,17 +37,13 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
    ```
 
-   
-
 2. #### 设置`Pyenv`启动语句
 
    ```bash
    echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
    ```
 
-   
-
-3. #### 刷新配置:
+3. #### 刷新配置
 
    ```bash
    exec "$SHELL"
@@ -60,7 +54,6 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
    ```bash
    source ~/.zshcr
    ```
-
 
 ### Pyenv的使用
 
@@ -80,23 +73,23 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
    | versions       | 列出`Pyenv`能设置的`Python`版本,星号表示当前活动版本  |
    | which          | 显示pyenv在运行给定命令时将调用的可执行文件的完整路径 |
    | whence         | 列出安装了给定命令的所有Python版本                    |
-   
+
 2. 部分命令详解:
 
    1. `install`
 
-      ```
+      ```bash
       Usage: pyenv install [-f] [-kvp] <version>
              pyenv install [-f] [-kvp] <definition-file>
              pyenv install -l|--list
              pyenv install --version
-      
+
         -l/--list          列出所有可安装的版本
         -f/--force         既是已经安装了该版本,也要继续安装
         -s/--skip-existing 如果该版本已经安装了就跳过安装
-      
+
         python-build options:
-      
+
         -k/--keep          Keep source tree in $PYENV_BUILD_ROOT after installation
                            (defaults to $PYENV_ROOT/sources)
         -p/--patch         Apply a patch from stdin before building
@@ -113,15 +106,13 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
          v=3.6.8;wget http://mirrors.sohu.com/python/$v/Python-$v.tar.xz -P ~/.pyenv/cache/;pyenv install $v
          ```
 
-         + 其中`v=3.8.3 `表示将要安装的版本
+         + 其中`v=3.8.2`表示将要安装的版本
          + `wget http://mirrors.sohu.com/python/$v/Python-$v.tar.xz -P ~/.pyenv/cache/` 指的是把 Python下载到pyenv的安装路径下的`cache`文件夹下。
          + 然后执行安装该版本
 
-      2. 
+      2.
 
-      
-
-   2. `global`,`local`,`shell` 
+   2. `global`,`local`,`shell`
 
       + `global`
 
@@ -153,13 +144,9 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
       pyenv local/shell --unset
       ```
 
-      
-
    3. `rehash`
 
       为pyenv（即，`~/.pyenv/versions/*/bin/*`）已知的所有Python二进制文件安装填充程序 。在安装新版本的Python之后运行此命令，或安装提供二进制文件的软件包。
-
-      
 
 ## 插件`pyenv-virtualenv`安装及使用
 
@@ -171,23 +158,17 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
       git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
       ```
 
-      
-
    2. #### 配置环境变量
 
       ```bash
       echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
       ```
 
-      
-
    3. #### 刷新配置
 
       ```bash
       source ~/.zshrc
       ```
-
-      
 
 2. ### 使用
 
@@ -197,8 +178,6 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
       pyenv virtualenv x.x.x env_x  # 虚拟环境名
       ```
 
-      
-
    2. #### 删除虚拟环境
 
       ```bash
@@ -206,15 +185,11 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
       pyenv virtualenv-delete env_x
       ```
 
-      
-
    3. #### 列出现在的虚拟环境
 
       ```bash
       pyenv virtualenvs
       ```
-
-      
 
    4. #### 激活虚拟环境
 
@@ -222,19 +197,11 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
       pyenv activate env_x
       ```
 
-      
-
    5. #### 退出虚拟环境
 
       ```bash
       pyenv deactivate
       ```
 
-      
-
 3. ### 其他
-
-
-
-
 
