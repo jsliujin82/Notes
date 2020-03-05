@@ -474,33 +474,51 @@ eval "$(lua ~/.config/z.lua/z.lua  --init zsh once enhanced)"
 
 10. #### 安装`docker`和`docker-compose`
 
+    安装依赖
+    
     ```bash
-    sudo apt install docker.io
+sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
     ```
 
-    编辑`~/.zshrc`,添加:   {如果是复制`config`,可不用添加)
-
+    添加`Docker`的`GPG`公钥
+    
     ```bash
-    export DOCKER_HOST='tcp://0.0.0.0:2375'
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
+    添加软件仓库
+    
+    ```bash
+    sudo add-apt-repository \
+   "deb [arch=amd64] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu \
+       $(lsb_release -cs) \
+   stable"
+    ```
+
+    安装`docker`
+    
+    ```bash
+    sudo apt update
+    sudo apt install docker-ce
+```
+    
     将当前用户 添加到docker用户组中
-
+    
     ```bash
     sudo usermod -aG docker USER_NAME
     sudo gpasswd -a ${USER} docker
     ```
-
+    
     查看docker-compose 最新版本 [网址](https://github.com/docker/compose/releases)
-
+    
     安装docker-compose
-
+    
     ```bash
     sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
     docker-compose --version
     ```
-
+    
     
 
 

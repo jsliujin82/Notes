@@ -45,12 +45,15 @@ sudo tee /etc/docker/daemon.json <<-'EOF'
 EOF
 ```
 设置系统自启动
+
+```bash
 sudo systemctl daemon-reload 
-sudo systemctl restart docker #自系统启动
+sudo systemctl restart docker
+```
 
 **Windows**
 
- 创建hyperv.cmd
+ 创建`hyperv.cmd`
  添加
 
  ```cmd
@@ -61,27 +64,27 @@ sudo systemctl restart docker #自系统启动
  Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL
  ```
 
- 管理员身份执行 hyderv.cmd
+ 管理员身份执行 `hyderv.cmd`
 
  重启
 
- 在控制面板-程序和功能 打开 Hyper-V
+ 在控制面板-程序和功能 打开 `Hyper-V`
 
- 管理员身份运行cmd
+ 管理员身份运行`cmd`
 
  ```cmd
  REG ADD "HKEY_LOCAL_MACHINE\software\Microsoft\Windows NT\CurrentVersion" /v EditionId /T REG_EXPAND_SZ /d Professional /F
  ```
 
- 安装docker for windows
+ 安装`ocker for windows`
 
  安装是注意取消勾选window容器（默认不会勾选）
 
- 如果是LTS环境中，打开Docker Desktop for windows 的 setting
+ 如果是`WSL`环境中，打开`Docker Desktop for windows` 的 `setting`
 
- General 中，勾选  Expose daemon on tcp://localhost:2375 without TLS
+` General `中，勾选 ` Expose daemon on tcp://localhost:2375 without TLS`
 
- 在TLS中编辑
+ 在`WSL`中编辑
 
  ```bash
  vim ~/.zshrc # 最后一行添加
