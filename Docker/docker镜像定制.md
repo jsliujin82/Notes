@@ -12,6 +12,33 @@ docker pull ubuntu:18.04
 docker images
 ```
 
+### 安装`pymysql`和`mysqlclient`
+
+1. 由于在`python`镜像中没有安装`Mysql`及其服务,所以安装`mysqlclient`会报`OSError: mysql_config no found`的错,所需要再系统中安装一个依赖:
+
+   1. ``Ubuntu`
+
+      ```bash
+      sudo apt installlibmysqlclient-dev
+      ```
+
+   2. `Manjaro`
+
+      ```bash
+      sudo pacman -S libmysqlclient
+      ```
+
+   
+
+2. 安装`pymysql`和`mysqlclient`
+
+   ```bash
+   pip install pymysql
+   pip isntall mysqlclient
+   ```
+
+   
+
 ### 安装常用工具和Python
 
 启动容器，并在容器内运行bash
