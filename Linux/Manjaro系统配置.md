@@ -100,8 +100,7 @@ git config --global core.quotepath false
 **1.1.6 pip修改pip3源**
 可直接复制`.config`中的`.pip`文件
 ```bash
-mkdir ~/.pip
-vim ~/.pip/pip.conf
+mkdir ~/.pip && vim ~/.pip/pip.conf
 ```
 
 ```

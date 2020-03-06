@@ -15,8 +15,8 @@
 2. #### 在`Manjaro`
 
    ```bash
-   pacman -S --needed base-devel openssl zlib bzip2 readline sqlite llvm ncurses xz tk libffi python-pyopenssl 
-
+   sudo pacman -S --needed base-devel openssl zlib bzip2 readline sqlite llvm ncurses xz tk libffi python-pyopenssl 
+   
    yay -S ncurses5-compat-libs
    ```
 
