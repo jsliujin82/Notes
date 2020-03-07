@@ -477,22 +477,22 @@ eval "$(lua ~/.config/z.lua/z.lua  --init zsh once enhanced)"
     安装依赖
     
     ```bash
-sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+    sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
     ```
 
     添加`Docker`的`GPG`公钥
     
     ```bash
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
     添加软件仓库
     
     ```bash
     sudo add-apt-repository \
-   "deb [arch=amd64] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu \
+      "deb [arch=amd64] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu \
        $(lsb_release -cs) \
-   stable"
+      stable"
     ```
 
     安装`docker`
@@ -500,7 +500,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```bash
     sudo apt update
     sudo apt install docker-ce
-```
+    ```
     
     将当前用户 添加到docker用户组中
     
@@ -524,7 +524,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 ### WSL相关问题
 
-1. `su` 问题
+1. #### `su` 问题
 
    如果出现 `su: Authentication failure`问题,先执行下面命令,设置`root`密码
 
@@ -532,7 +532,86 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
    sudo passwd root
    ```
 
-2. 
+2. #### `WSL2(Manjaro)`中使用`systemctl`命令:
+
+    1. ##### **方法1**:
+
+       + 原理
+
+         大概原理是在一个单独的命名空间跑systemd，从而实现能够正常执行systemctl指令并启动服务,解决方案是使用[arkane-systems/genie](https://github.com/arkane-systems/genie)项目
+
+       + 安装步骤
+
+         1. 安装运行 `.NET`
+
+            首先需要安装`.NET Core runtime`，
+
+            ```bash
+            yay dotnet
+            ```
+
+            找到带`runtime`的安装即可.安装完成后检查下是否其安装目录，
+
+            ```bash
+            whereis dotnet
+            ```
+
+            如果不在默认位置需要手动写一下环境变量，如`export DOTNET_ROOT=/opt/dotnet`
+
+         2. 安装相应编译环境
+
+            需要python、python-markdown、python-six、python-packaging、python-setuptool、python-attrs等依赖包 而且按照测试来看似乎无法自动安装，因此最好先使用yay安装上他们（这些模块使用pip安装貌似也不行）
+
+            ```bash
+            yay -S python python-markdown python-six python-packaging python-setuptool python-attrs
+            ```
+
+         3. 安装`genie`
+
+            使用 下载 `genie` 源码并安装，如果中间出现缺少某个环境的话，退回到上一步安装即可
+
+            ```bash
+            yay -S genie-systemd
+            ```
+
+       + 使用方式
+
+         1. `genie`有三个命令:
+
+            + `genie -i`
+
+              启动`systemd`进程
+
+            + `genie -s`
+
+              启动systemd进程，并进入该环境终端
+
+            + `genie -c <command>`
+
+              启动systemd进程，并执行相应的指令
+
+         2. 比如运行`docker`
+
+            + 使用`genie -s`进入到环境后，执行`sudo systemctl start docker`即可 而且在这里执
+
+         3.  **注意**
+
+            执行完成后退出这个命名空间后，`systemd`不会关闭
+
+       
+
+    2. ##### **方法2**:
+
+       ```bash
+       sudo daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
+       exec sudo nsenter -t $(pidof systemd) -a su - $LOGNAME
+       ```
+
+       
+
+3. #### 其他
+
+    
 
 
 
