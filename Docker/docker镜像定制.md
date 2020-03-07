@@ -14,12 +14,14 @@ docker images
 
 ### 安装`pymysql`和`mysqlclient`
 
-1. 由于在`python`镜像中没有安装`Mysql`及其服务,所以安装`mysqlclient`会报`OSError: mysql_config no found`的错,所需要再系统中安装一个依赖:
+1. 由于在`python`镜像中没有安装`Mysql`及其服务,所以***如果***安装`mysqlclient`会报`OSError: mysql_config no found`的错,所需要再系统中安装一个依赖:
 
    1. ``Ubuntu`
 
       ```bash
-      sudo apt installlibmysqlclient-dev
+      sudo apt install libmysqlclient-dev
+      # 或者
+      sudo apt install default-libmysqlclient-dev
       ```
 
    2. `Manjaro`
@@ -34,7 +36,7 @@ docker images
 
    ```bash
    pip install pymysql
-   pip isntall mysqlclient
+   pip install mysqlclient
    ```
 
    
