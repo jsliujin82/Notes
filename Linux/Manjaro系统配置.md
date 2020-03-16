@@ -1,7 +1,7 @@
 # Manjaro 系统安装与配置
-### 1.升级系统
+### 1. 升级系统
 
-#### 1.1修改更新源及基本设置
+#### 1.1 修改更新源及基本设置
 **1.1.1 设置镜源**
 
 对国内的镜像源进行测速及选择
@@ -109,7 +109,35 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 trusted-host = pypi.tuna.tsinghua.edu.cn
 ```
 
+##### 1.7 安装`deb`
+
+安装`debtap`
+
+```bash
+yay -S debtap
+```
+
+升级`debtap`
+
+```bash
+sudo debtap -u
+```
+
+**使用方法**
+
+```bash
+sudo debtap xxxxx.deb
+```
+
+安装时会提示输入包名，以及`license`。包名随意，`license`就填``GPL``吧
+上述操作完成后会在`deb`包同级目录生成`×.tar.xz`文件，直接用`pacman`安装即可
+
+```bash
+sudo pacman -U x.tar.xz
+```
+
 #### 1.2安装font
+
 中文字体
 ```bash
 yay -S wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei adobe-source-han-mono-cn-fonts adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts nerd-fonts-source-code-pro
@@ -197,7 +225,7 @@ github.global.ssl.fastly.net
 199.232.4.133 raw.githubusercontent.com
 ```
 
-#### 1.5更新dns（不需要就不用执行）
+#### 1.5 更新dns（不需要就不用执行）
 ```
 # Arch Linux/Manjaro with Network Manager: 
 sudo systemctl restart NetworkManager.service
@@ -206,7 +234,7 @@ sudo systemctl restart NetworkManager.service
 sudo systemctl restart wicd.service
 ```
 
-#### 1.6双屏扩展
+#### 1.6 双屏扩展
 先查看视频输出端口
 ```bash
 xrandr -q
@@ -214,8 +242,8 @@ xrandr -q
 设置双屏
 ```
 xrandr --output LVDS1 --auto --output HDMI1 --auto --right-of LVDS1
+xrandr --output LVDS1 --auto --output VGA1 --auto --right-of LVDS1
 ```
-
 
 ### 2.安装app
 
