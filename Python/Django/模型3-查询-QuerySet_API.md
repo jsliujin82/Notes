@@ -1,4 +1,11 @@
-**API目录**
+## QuerySet API:
+
+通常做查询操作的时候，都是通过`模型名字.objects`的方式进行操作。其实`模型名字.objects`是一个`django.db.models.manager.Manager`对象，而`Manager`这个类是一个“空壳”的类，他本身是没有任何的属性和方法的。他的方法全部都是通过`Python`动态添加的方式，从`QuerySet`类中拷贝过来的。示例图如下：
+
+![QuerySet_and_Manager](./Images/QuerySet_and_Manager.png)
+
+### API目录
+
 | API                 | 说明                                                                                                          |
 |---------------------|---------------------------------------------------------------------------------------------------------------|
 | all()               | 查询所有结果                                                                                                  |
@@ -34,17 +41,13 @@
 
 使用all()方法，可以获取某张表的所有记录。返回当前QuerySet（或QuerySet子类）的副本。通常用于获取全部QuerySet对象。
 
-```
+```python
 def orm(requst):
     #获取所有文章，对应SQL：select * from Article
     all_article = models.Article.objects.all()
     print(all_article)
     return HttpResponse('orm')
 ```
-
-保存之后，我们通过浏览器访问，然后查看 Terminal，看到我们的打印出来的查询结果，一共有四篇文章。
-
-![1.jpg](https://www.django.cn/media/upimg/1_20180819213735_709.jpg)
 
 查询出来的是一个QuerySet的对象。
 
