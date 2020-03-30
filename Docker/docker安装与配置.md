@@ -44,11 +44,43 @@ sudo tee /etc/docker/daemon.json <<-'EOF'
 }
 EOF
 ```
+检查`docker`是否监听`2375`端口
+
+```bash
+sudo systemctl status docker
+# 或者
+netstat –tulnp | grep docker
+```
+
++ 如果没有监听`2375`端口，就增加端口，修改其`.service`文件
+
+  ```bash
+  sudo nvim /usr/lib/systemd/system/docker.service
+  ```
+
++ 在`/usr/bin/dockerd`后面加上
+
+  ```
+  -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
+  ```
+
+  该栏最终改成：
+
+  ```bash
+  ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
+  ```
+
++ 重载`service`文件并重启`docker`
+
+  ```bash
+  sudo systemctl daemon-reload
+  sudo systemctl restart docker
+  ```
+
 设置系统自启动
 
 ```bash
-sudo systemctl daemon-reload 
-sudo systemctl restart docker
+sudo systemctl enable docker 
 ```
 
 **Windows**

@@ -7,7 +7,10 @@
 下载安装一键v2ray：
 
 ```bash
+# Ubuntu
 bash <(curl -sL https://raw.githubusercontent.com/hijkpw/scripts/master/ubuntu_install_v2ray.sh)
+# CentOS
+bash <(curl -sL https://raw.githubusercontent.com/hijkpw/scripts/master/centos_install_v2ray.sh)
 ```
 
 等待等待一段时间，上面的命令会安装一些依赖
@@ -29,7 +32,10 @@ v2ray配置信息：
 查看配置运行状态/参数的命令是：
 
 ```bash
+# Ubuntu
 bash <(curl -sL https://raw.githubusercontent.com/hijkpw/scripts/master/ubuntu_install_v2ray.sh) info
+# CentOS
+bash <(curl -sL https://raw.githubusercontent.com/hijkpw/scripts/master/centos_install_v2ray.sh) info
 ```
 
 更改端口、alterid最简单的办法是重新运行一次一键脚本
@@ -37,7 +43,10 @@ bash <(curl -sL https://raw.githubusercontent.com/hijkpw/scripts/master/ubuntu_i
  卸载命令：
 
 ```bash
+# Ubuntu
 bash <(curl -sL https://raw.githubusercontent.com/hijkpw/scripts/master/ubuntu_install_v2ray.sh) uninstall
+# CentOS
+bash <(curl -sL https://raw.githubusercontent.com/hijkpw/scripts/master/centos_install_v2ray.sh) uninstall
 ```
 
 #### 2. 非一键式
