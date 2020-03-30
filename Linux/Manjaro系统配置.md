@@ -265,7 +265,14 @@ sudo npm install -g cnpm
 sudo cnpm install -g yarn fis3
 ```
 
+修改`yarn`源为`taobao`源
+
+```bash
+yarn config set registry https://registry.npm.taobao.org/
+```
+
 #### 安装vim(未安装，`nvim`代替)
+
 ```
 git clone git@github.com:qiuyue77/.config.git
 cp -r .config/vim ~/.vim
