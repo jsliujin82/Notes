@@ -262,6 +262,14 @@ Windows Terminal 主题设置见[***网页***](https://github.com/mbadolato/iTer
 
       
 
+   3. 不检查`filemode`,设置:
+
+      ```bash
+      git config --global core.filemode false
+      ```
+
+      
+
    4. 
 
 5. #### 安装`zsh`

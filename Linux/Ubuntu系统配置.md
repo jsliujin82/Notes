@@ -548,3 +548,11 @@ sudo apt install python3-pip
 > ````bash
 > git config --global core.quotepath false 
 > ````
+>
+> 不检查`filemode`,设置:
+>
+> ```bash
+> git config --global core.filemode false
+> ```
+>
+> 
