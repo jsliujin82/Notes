@@ -120,7 +120,7 @@ rcdn -v -t zsh
 
    ​	显示版本号show the version number.
 
-2. #### [`**lsrc**`](http://thoughtbot.github.io/rcm/lsrc.1.html) 
+2. #### [**`lsrc`**](http://thoughtbot.github.io/rcm/lsrc.1.html) 
 
    `lsrc [-FhqVv] [-B hostname] [-d dir] [-I excl_pat] [-S excl_pat] [-s excl_pat] [-t tag] [-U excl_pat] [-u excl_pat] [-x excl_pat] [files ...]`
 
@@ -186,7 +186,7 @@ rcdn -v -t zsh
 
    ​	only list the specified file(s)
 
-3. #### [`**rcup**`](http://thoughtbot.github.io/rcm/rcup.1.html) 
+3. #### [**`rcup`**](http://thoughtbot.github.io/rcm/rcup.1.html) 
 
    `rcup[-CfhiKkqVv] [-B hostname] [-d dir] [-g] [-I excl_pat] [-S excl_pat] [-s excl_pat] [-t tag] [-U excl_pat] [-u excl_pat] [-x excl_pat] [files ...]`
 
@@ -272,7 +272,7 @@ rcdn -v -t zsh
 
    ​	only install the specified file(s)
 
-4. #### [`**rcdn**`](http://thoughtbot.github.io/rcm/rcdn.1.html) 
+4. #### [**`rcdn`**](http://thoughtbot.github.io/rcm/rcdn.1.html) 
 
    `rcdn[-hKkqVv] [-B hostname] [-d dir] [-I excl_pat] [-S excl_pat] [-s excl_pat] [-t tag] [-U excl_pat] [-u excl_pat] [-x excl_pat] [files ...]`
 
