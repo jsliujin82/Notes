@@ -1,31 +1,31 @@
-## rcm
+# rcm
 
 #### `rcm` 是专门管理`dotfiles`的插件，[网址](https://github.com/thoughtbot/rcm)
 
-### 安装
+## 安装
 
-1. `Alpine Linux`
+1. ##### `Alpine Linux`
   ```
   sudo apk add rcm
   ```
 
-2. `Manjaro`
+2. ##### `Manjaro`
   ```
   yay -S rcm
   ```
 
-3. `Ubuntu`
+3. ##### `Ubuntu`
   ```
   sudo add-apt-repository ppa:martin-frost/thoughtbot-rcm
   sudo apt-get update
   sudo apt-get install rcm
   ```
 
-### 使用
+## 使用
 
 官网介绍[链接](http://thoughtbot.github.io/rcm/rcm.7.html)
 
-#### 4个命令
+### 4个命令
 
 ```bash
 mkrc – 将文件转换为由 rcm 管理的隐藏文件
@@ -34,7 +34,7 @@ rcup – 同步由 rcm 管理的隐藏文件
 rcdn – 删除 rcm 管理的所有符号链接
 ```
 
-#### 快速使用，以`zsh`为例：
+### 快速使用，以`zsh`为例：
 
 将`.zshrc`文件转换成由`rcm`管理文件,`-t`是将此次文件放到标签文件`zsh`中,`-v`显示详情
 
@@ -60,9 +60,9 @@ rcup -v -t zsh
 rcdn -v -t zsh
 ```
 
-#### **命令详情：**
+### **命令详情：**
 
-1. [**`mkrc`**](http://thoughtbot.github.io/rcm/mkrc.1.html) 
+1. #### [**`mkrc`**](http://thoughtbot.github.io/rcm/mkrc.1.html) 
 
    `mkrc	[-ChoqSsVvUu] [-t tag] [-d dir] [-B hostname] files`
 
@@ -120,7 +120,7 @@ rcdn -v -t zsh
 
    ​	显示版本号show the version number.
 
-2. [`**lsrc**`](http://thoughtbot.github.io/rcm/lsrc.1.html) 
+2. #### [`**lsrc**`](http://thoughtbot.github.io/rcm/lsrc.1.html) 
 
    `lsrc [-FhqVv] [-B hostname] [-d dir] [-I excl_pat] [-S excl_pat] [-s excl_pat] [-t tag] [-U excl_pat] [-u excl_pat] [-x excl_pat] [files ...]`
 
@@ -186,7 +186,7 @@ rcdn -v -t zsh
 
    ​	only list the specified file(s)
 
-3. [`**rcup**`](http://thoughtbot.github.io/rcm/rcup.1.html) 
+3. #### [`**rcup**`](http://thoughtbot.github.io/rcm/rcup.1.html) 
 
    `rcup[-CfhiKkqVv] [-B hostname] [-d dir] [-g] [-I excl_pat] [-S excl_pat] [-s excl_pat] [-t tag] [-U excl_pat] [-u excl_pat] [-x excl_pat] [files ...]`
 
@@ -272,7 +272,7 @@ rcdn -v -t zsh
 
    ​	only install the specified file(s)
 
-4. [`**rcdn**`](http://thoughtbot.github.io/rcm/rcdn.1.html) 
+4. #### [`**rcdn**`](http://thoughtbot.github.io/rcm/rcdn.1.html) 
 
    `rcdn[-hKkqVv] [-B hostname] [-d dir] [-I excl_pat] [-S excl_pat] [-s excl_pat] [-t tag] [-U excl_pat] [-u excl_pat] [-x excl_pat] [files ...]`
 
@@ -342,17 +342,24 @@ rcdn -v -t zsh
 
    ​	only remove the specified file(s)
 
-#### 配置文件
+### 配置文件
 
 ​	`rcrc`默认在`~/.rcrc`
 
-- **格式：**
+- #### **格式：**
 
   ```
-  X=“abc”
+  X=“abc efg”
   ```
 
-- **参数：**
+- #### **实例:**
+
+  ```bash
+TAGS="i3 python alacritty"
+  EXCLUDES="something"
+```
+  
+- #### **参数：**
 
   - **COPY_ALWAYS**
 
