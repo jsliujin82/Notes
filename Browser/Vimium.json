@@ -1,0 +1,36 @@
+{
+	"name": "Vimium C",
+	"@time": "3/30/2020, 7:36:11 PM",
+	"time": 1585568171446,
+	"environment": {
+		"extension": "1.81.1",
+		"platform": "linux",
+		"chrome": 80
+	},
+	"keyMappings": [
+		"map e scrollPageUp",
+		"map d scrollPageDown",
+		"map j scrollLeft",
+		"map l scrollRight",
+		"map i scrollUp",
+		"map k scrollDown",
+		"map E scrollToTop",
+		"map D scrollToBottom",
+		"map I goBack",
+		"map K goForward",
+		"map J previousTab",
+		"map L nextTab",
+		"mapKey <caps> <esc>",
+		"map h Vomnibar.activateHistory",
+		"map H Vomnibar.activateHistoryInNewTab",
+		"map . performFind",
+		"map , performBackwardsFind",
+		"map > moveTabRight",
+		"map < moveTabLeft",
+		"unmap W",
+		"unmap t",
+		"map tn moveTabToNextWindow",
+		""
+	],
+	"showAdvancedCommands": true
+}
